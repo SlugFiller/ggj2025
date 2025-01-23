@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdjffdg4jfv7t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sg5es"]
+friction = 0.0
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cx7wd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvy1e"]
+size = Vector2(88, 91)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(251, 77)
+physics_material_override = SubResource("PhysicsMaterial_sg5es")
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_cx7wd")
+
+[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D"]
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(239, 70)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-24, 14, 45, 65, 26, 97, -40, 40)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-24, 14, 45, 65, 26, 97, -40, 40)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(319, 237)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(-24, 14, 115, 19, 26, 97, -40, 40)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(-24, 14, 115, 19, 26, 97, -40, 40)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(205, -118)
+gravity_space_override = 1
+gravity_point_center = Vector2(-1, -1)
+gravity_direction = Vector2(-1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(351, 312)
+shape = SubResource("RectangleShape2D_dvy1e")
