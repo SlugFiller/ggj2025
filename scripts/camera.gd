@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var mouse: RigidBody2D = $"../Mouse"
+@onready var mouse: Node2D = $"../Mouse"
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=114 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Texture2D" uid="uid://bhgu40hmi37fg" path="res://graphics/mouse/idle/mouse idle 00000.png" id="1_4tvk3"]
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_deb8d"]
@@ -105,10 +105,6 @@
 [ext_resource type="Texture2D" uid="uid://jc7qm0sg6l1g" path="res://graphics/mouse/run/mouse run 00006.png" id="87_bnjdw"]
 [ext_resource type="Texture2D" uid="uid://cs12sog3u48l7" path="res://graphics/mouse/run/mouse run 00007.png" id="88_odbcx"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sg5es"]
-friction = 0.0
-bounce = 0.35
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qcgu"]
 animations = [{
@@ -390,9 +386,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx7wd"]
 radius = 100.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3tcb5"]
-radius = 70.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvy1e"]
 size = Vector2(88, 91)
 
@@ -464,10 +457,8 @@ normal = Vector2(-1, 0)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Mouse" type="RigidBody2D" parent="."]
+[node name="Mouse" type="CharacterBody2D" parent="."]
 position = Vector2(288, -101)
-physics_material_override = SubResource("PhysicsMaterial_sg5es")
-lock_rotation = true
 script = ExtResource("1_deb8d")
 
 [node name="sprite" type="AnimatedSprite2D" parent="Mouse"]
@@ -477,10 +468,6 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
 shape = SubResource("CircleShape2D_cx7wd")
-
-[node name="groundcheck" type="ShapeCast2D" parent="Mouse"]
-shape = SubResource("CircleShape2D_3tcb5")
-target_position = Vector2(0, 45)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(239, 70)
