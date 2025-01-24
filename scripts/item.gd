@@ -1,15 +1,13 @@
 extends Area2D
 class_name Item
 
-@export var item : PackedScene
+@export var count: int = 1
+@export var item: PackedScene
 @onready var held: Node2D = $held
+var checkpoint_count: int
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	self.checkpoint_count = self.count
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_restart() -> void:
+	self.count = self.checkpoint_count

@@ -1,9 +1,10 @@
-[gd_scene load_steps=114 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=119 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Texture2D" uid="uid://bhgu40hmi37fg" path="res://graphics/mouse/idle/mouse idle 00000.png" id="1_4tvk3"]
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_deb8d"]
+[ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
 [ext_resource type="Texture2D" uid="uid://bavkplph4sro4" path="res://graphics/mouse/idle/mouse idle 00001.png" id="2_5fq15"]
-[ext_resource type="PackedScene" uid="uid://0l87e2dki8x7" path="res://items/item1.tscn" id="2_axotv"]
+[ext_resource type="PackedScene" uid="uid://0l87e2dki8x7" path="res://items/fan.tscn" id="2_axotv"]
 [ext_resource type="Script" path="res://scripts/cursor.gd" id="2_nma6k"]
 [ext_resource type="Texture2D" uid="uid://ctc6kg8j7uvo4" path="res://graphics/mouse/idle/mouse idle 00002.png" id="3_3is8t"]
 [ext_resource type="Texture2D" uid="uid://bgormcm3l1sfw" path="res://graphics/cursor/Hand0.png" id="3_nxd8a"]
@@ -104,6 +105,8 @@
 [ext_resource type="Texture2D" uid="uid://bbb7ktylhgf0i" path="res://graphics/mouse/run/mouse run 00005.png" id="86_36750"]
 [ext_resource type="Texture2D" uid="uid://jc7qm0sg6l1g" path="res://graphics/mouse/run/mouse run 00006.png" id="87_bnjdw"]
 [ext_resource type="Texture2D" uid="uid://cs12sog3u48l7" path="res://graphics/mouse/run/mouse run 00007.png" id="88_odbcx"]
+[ext_resource type="Script" path="res://scripts/tunnel.gd" id="91_yf7xd"]
+[ext_resource type="Script" path="res://scripts/itemcount.gd" id="92_ni3rh"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qcgu"]
@@ -386,11 +389,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx7wd"]
 radius = 100.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvy1e"]
-size = Vector2(88, 91)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35d78"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6cl1"]
-size = Vector2(581, 294.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvtc3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kpgym"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sxgfc"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7y0q"]
+size = Vector2(137, 606)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3qnc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4j61"]
 size = Vector2(200, 200)
@@ -449,13 +461,8 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kpgym"]
-normal = Vector2(1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sxgfc"]
-normal = Vector2(-1, 0)
-
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_lnqoj")
 
 [node name="Mouse" type="CharacterBody2D" parent="."]
 position = Vector2(714, 85)
@@ -470,50 +477,76 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
 shape = SubResource("CircleShape2D_cx7wd")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="fan_detector" type="Area2D" parent="Mouse"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/fan_detector"]
+shape = SubResource("RectangleShape2D_35d78")
+
+[node name="death_detector" type="Area2D" parent="Mouse"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/death_detector"]
+shape = SubResource("CircleShape2D_cx7wd")
+
+[node name="tunnel_detector" type="Area2D" parent="Mouse"]
+position = Vector2(0, 90)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/tunnel_detector"]
+shape = SubResource("RectangleShape2D_yvtc3")
+
+[node name="walls" type="StaticBody2D" parent="."]
 position = Vector2(509, 120)
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-56, 194, 77, 120, 765, 116, 758, -23, 879, -35, 876, 181, 121, 187, -64, 268)
+[node name="Polygon2D" type="Polygon2D" parent="walls"]
+polygon = PackedVector2Array(-414, -98, -376, 164, 629, 146, 642, 259, -381, 292, -368.351, 834.23, 1045, 821, 1033, -103, 1156, -103, 1196, 907, -467, 955, -500, -91)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-56, 194, 77, 120, 765, 116, 758, -23, 879, -35, 876, 181, 121, 187, -64, 268)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="walls"]
+polygon = PackedVector2Array(-414, -98, -376, 164, 629, 146, 642, 259, -381, 292, -368.351, 834.23, 1045, 821, 1033, -103, 1156, -103, 1196, 907, -467, 955, -500, -91)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(1188, 320)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+position = Vector2(-509, -120)
+shape = SubResource("WorldBoundaryShape2D_kpgym")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-polygon = PackedVector2Array(-24, 14, 115, 19, 26, 97, -40, 40)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+position = Vector2(1411, -120)
+shape = SubResource("WorldBoundaryShape2D_sxgfc")
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
-polygon = PackedVector2Array(-24, 14, 115, 19, 26, 97, -40, 40)
+[node name="death" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
-[node name="fan" type="Area2D" parent="."]
-position = Vector2(571, -175)
-gravity_space_override = 1
-gravity_point_center = Vector2(-1, -1)
-gravity_direction = Vector2(-1, -1)
-gravity = 300.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
+position = Vector2(1472, 318)
+shape = SubResource("RectangleShape2D_k7y0q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fan"]
-position = Vector2(236, 352)
-shape = SubResource("RectangleShape2D_dvy1e")
+[node name="tunnel" type="Area2D" parent="."]
+position = Vector2(1186, 919)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("91_yf7xd")
+direction = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tunnel"]
+shape = SubResource("RectangleShape2D_i3qnc")
+
+[node name="target" type="Node2D" parent="tunnel"]
+position = Vector2(-308, 284)
+
+[node name="Node" type="Node" parent="tunnel/target" node_paths=PackedStringArray("item")]
+script = ExtResource("92_ni3rh")
+item = NodePath("../../../ui/Item1")
+count = 5
 
 [node name="placetarget" type="Node2D" parent="."]
-
-[node name="damp" type="Area2D" parent="."]
-linear_damp_space_override = 1
-linear_damp = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damp"]
-position = Vector2(572.5, 489.75)
-shape = SubResource("RectangleShape2D_p6cl1")
 
 [node name="ui" type="CanvasLayer" parent="."]
 
 [node name="Item1" type="Area2D" parent="ui"]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("15_8s55e")
 item = ExtResource("2_axotv")
 
@@ -546,13 +579,5 @@ process_priority = 1
 offset = Vector2(960, 0)
 script = ExtResource("105_ny4tv")
 
-[node name="wall_left" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_left"]
-shape = SubResource("WorldBoundaryShape2D_kpgym")
-
-[node name="wall_right" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_right"]
-position = Vector2(1920, 0)
-shape = SubResource("WorldBoundaryShape2D_sxgfc")
+[connection signal="restart" from="." to="ui/Item1" method="_on_restart"]
+[connection signal="restart" from="." to="ui/Cursor" method="_on_restart"]
