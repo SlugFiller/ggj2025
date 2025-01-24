@@ -48,10 +48,11 @@ func _physics_process(delta: float) -> void:
 		self.respawn = false
 		self.position = self.checkpoint
 		self.direction = self.checkpoint_direction
-		self.sprite.position = Vector2.ZERO
 		self.deathfall = false
 		self.velocity = Vector2.ZERO
 		self.y_shift = 0.0
+		sprite.position = Vector2.ZERO
+		sprite.play("idle")
 		move_and_slide()
 		return
 	if death_detector.has_overlapping_areas():

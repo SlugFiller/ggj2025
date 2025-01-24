@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=4 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=134 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_deb8d"]
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
@@ -124,16 +124,8 @@
 [ext_resource type="Script" path="res://scripts/itemcount.gd" id="92_ni3rh"]
 [ext_resource type="Texture2D" uid="uid://bb71xreoov5sj" path="res://graphics/items/fan/frame00.png" id="96_u06ny"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
-[ext_resource type="Texture2D" uid="uid://b3n1tto34se8" path="res://graphics/map/Floor tiles.png" id="107_3ufgy"]
-[ext_resource type="Texture2D" uid="uid://divdwokxv6hld" path="res://graphics/map/Floor tiles_Ceiling_Corner_Left.png" id="108_aahgn"]
-[ext_resource type="Texture2D" uid="uid://cugrk37tnmxis" path="res://graphics/map/Floor tiles_Ceiling_Corner_Right.png" id="109_bm0sj"]
+[ext_resource type="PackedScene" uid="uid://dnltbxbdvgli5" path="res://map/map.tscn" id="107_sbdnp"]
 [ext_resource type="Texture2D" uid="uid://d4jncr1ihdlcg" path="res://graphics/ui/sidemenu.png" id="109_dpyqo"]
-[ext_resource type="Texture2D" uid="uid://cfo7o51wkugdf" path="res://graphics/map/Floor tiles_Floor.png" id="110_ydqwk"]
-[ext_resource type="Texture2D" uid="uid://bdnlqcqulihmq" path="res://graphics/map/Floor tiles_Floor_Corner_Left.png" id="111_1bsuo"]
-[ext_resource type="Texture2D" uid="uid://bq3ww1l7ncxbn" path="res://graphics/map/Floor tiles_Floor_Corner_Right.png" id="112_n2oq5"]
-[ext_resource type="Texture2D" uid="uid://d2aikbi0hjaab" path="res://graphics/map/Floor tiles_Left wall.png" id="113_13l3d"]
-[ext_resource type="Texture2D" uid="uid://cg15xhdwrjd4a" path="res://graphics/map/Floor tiles_Right wall.png" id="114_kgr4o"]
-[ext_resource type="Texture2D" uid="uid://cpyiw2mnr0e57" path="res://graphics/map/Spikes.png" id="115_xc223"]
 [ext_resource type="PackedScene" uid="uid://hkogf8nblgtr" path="res://map/tunnel.tscn" id="116_oowc5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qcgu"]
@@ -473,78 +465,6 @@ radius = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvtc3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4o826"]
-texture = ExtResource("107_3ufgy")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8souj"]
-texture = ExtResource("108_aahgn")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, -100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dwt7"]
-texture = ExtResource("109_bm0sj")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, 100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g284t"]
-texture = ExtResource("110_ydqwk")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ssl5"]
-texture = ExtResource("111_1bsuo")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -100, 100, 100, -100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8oye"]
-texture = ExtResource("112_n2oq5")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(100, -100, 100, 100, -100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_staqj"]
-texture = ExtResource("113_13l3d")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyvdk"]
-texture = ExtResource("114_kgr4o")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3m73g"]
-texture = ExtResource("115_xc223")
-texture_region_size = Vector2i(200, 200)
-0:0/0 = 0
-0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
-
-[sub_resource type="TileSet" id="TileSet_dt07r"]
-tile_size = Vector2i(200, 200)
-physics_layer_0/collision_layer = 1
-physics_layer_1/collision_layer = 4
-physics_layer_1/collision_mask = 4
-sources/0 = SubResource("TileSetAtlasSource_4o826")
-sources/1 = SubResource("TileSetAtlasSource_8souj")
-sources/2 = SubResource("TileSetAtlasSource_4dwt7")
-sources/3 = SubResource("TileSetAtlasSource_g284t")
-sources/4 = SubResource("TileSetAtlasSource_6ssl5")
-sources/5 = SubResource("TileSetAtlasSource_x8oye")
-sources/6 = SubResource("TileSetAtlasSource_staqj")
-sources/7 = SubResource("TileSetAtlasSource_xyvdk")
-sources/8 = SubResource("TileSetAtlasSource_3m73g")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7y0q"]
-size = Vector2(137, 606)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4j61"]
 size = Vector2(200, 200)
 
@@ -640,26 +560,16 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/tunnel_detector"]
 shape = SubResource("RectangleShape2D_yvtc3")
 
-[node name="TileMap" type="TileMapLayer" parent="."]
-scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAoAAAAAAAAAAAAAAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAIACAAAAAAAAGAOAAMACAAAAAAAAGAOAAQACAAAAAAAAGAOAAUACAAAAAAAAGABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_dt07r")
-
-[node name="death" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
-position = Vector2(1472, 318)
-shape = SubResource("RectangleShape2D_k7y0q")
+[node name="map" parent="." instance=ExtResource("107_sbdnp")]
 
 [node name="tunnel" parent="." instance=ExtResource("116_oowc5")]
 
 [node name="target" type="Node2D" parent="tunnel"]
 position = Vector2(-308, 284)
 
-[node name="Node" type="Node" parent="tunnel/target"]
+[node name="Node" type="Node" parent="tunnel/target" node_paths=PackedStringArray("item")]
 script = ExtResource("92_ni3rh")
+item = NodePath("../../../ui/Item1")
 count = 5
 
 [node name="placetarget" type="Node2D" parent="."]
