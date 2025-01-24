@@ -2,7 +2,8 @@ extends Node2D
 class_name Cursor
 
 @onready var sprite: AnimatedSprite2D = $sprite
-@export var placetarget: Node2D
+@onready var placetarget: Node2D = $"../../placetarget"
+@onready var camera: Camera2D = $"../../Camera2D"
 var hover: Item = null
 var hold: Item = null
 
@@ -19,7 +20,7 @@ func _input(event: InputEvent) -> void:
 			if hold != null:
 				hold.held.visible = false
 				var placed := hold.item.instantiate() as Node2D
-				placed.position = event.position
+				placed.position = event.position + camera.position + Vector2(0, -540)
 				placetarget.add_child(placed)
 			hold = null
 	elif event is InputEventMouseMotion:
@@ -33,6 +34,7 @@ func _process(delta: float) -> void:
 	self.position = position
 	var space_state := get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
+	query.canvas_instance_id = get_parent().get_instance_id()
 	query.position = position
 	query.collide_with_areas = true
 	query.collide_with_bodies = false

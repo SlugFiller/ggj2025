@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=116 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Texture2D" uid="uid://bhgu40hmi37fg" path="res://graphics/mouse/idle/mouse idle 00000.png" id="1_4tvk3"]
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_deb8d"]
@@ -104,6 +104,7 @@
 [ext_resource type="Texture2D" uid="uid://bbb7ktylhgf0i" path="res://graphics/mouse/run/mouse run 00005.png" id="86_36750"]
 [ext_resource type="Texture2D" uid="uid://jc7qm0sg6l1g" path="res://graphics/mouse/run/mouse run 00006.png" id="87_bnjdw"]
 [ext_resource type="Texture2D" uid="uid://cs12sog3u48l7" path="res://graphics/mouse/run/mouse run 00007.png" id="88_odbcx"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sg5es"]
 friction = 0.0
@@ -387,16 +388,19 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx7wd"]
-radius = 30.0
+radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3tcb5"]
-radius = 25.0
+radius = 70.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvy1e"]
 size = Vector2(88, 91)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6cl1"]
+size = Vector2(581, 294.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4j61"]
-size = Vector2(55, 55)
+size = Vector2(200, 200)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7ix31"]
 animations = [{
@@ -452,19 +456,22 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6cl1"]
-size = Vector2(581, 294.5)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kpgym"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sxgfc"]
+normal = Vector2(-1, 0)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Mouse" type="RigidBody2D" parent="."]
-position = Vector2(230, 49)
+position = Vector2(288, -101)
 physics_material_override = SubResource("PhysicsMaterial_sg5es")
 lock_rotation = true
 script = ExtResource("1_deb8d")
 
 [node name="sprite" type="AnimatedSprite2D" parent="Mouse"]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.32, 0.32)
 sprite_frames = SubResource("SpriteFrames_5qcgu")
 animation = &"idle"
 
@@ -473,7 +480,7 @@ shape = SubResource("CircleShape2D_cx7wd")
 
 [node name="groundcheck" type="ShapeCast2D" parent="Mouse"]
 shape = SubResource("CircleShape2D_3tcb5")
-target_position = Vector2(0, 10)
+target_position = Vector2(0, 45)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(239, 70)
@@ -494,7 +501,7 @@ polygon = PackedVector2Array(-24, 14, 115, 19, 26, 97, -40, 40)
 polygon = PackedVector2Array(-24, 14, 115, 19, 26, 97, -40, 40)
 
 [node name="fan" type="Area2D" parent="."]
-position = Vector2(205, -118)
+position = Vector2(571, -175)
 gravity_space_override = 1
 gravity_point_center = Vector2(-1, -1)
 gravity_direction = Vector2(-1, -1)
@@ -506,40 +513,58 @@ shape = SubResource("RectangleShape2D_dvy1e")
 
 [node name="placetarget" type="Node2D" parent="."]
 
-[node name="Item1" type="Area2D" parent="."]
+[node name="damp" type="Area2D" parent="."]
+linear_damp_space_override = 1
+linear_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damp"]
+position = Vector2(572.5, 489.75)
+shape = SubResource("RectangleShape2D_p6cl1")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="Item1" type="Area2D" parent="ui"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("15_8s55e")
 item = ExtResource("2_axotv")
 
-[node name="Polygon2D" type="Polygon2D" parent="Item1"]
+[node name="Polygon2D" type="Polygon2D" parent="ui/Item1"]
+position = Vector2(1819, 101)
 color = Color(1, 1, 0, 1)
-polygon = PackedVector2Array(467, 71, 520, 71, 520, 125, 467, 125)
+polygon = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Item1"]
-position = Vector2(494, 98)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item1"]
+position = Vector2(1819, 101)
 shape = SubResource("RectangleShape2D_k4j61")
 
-[node name="held" type="Node2D" parent="Item1"]
+[node name="held" type="Node2D" parent="ui/Item1"]
 visible = false
 
-[node name="held" type="Polygon2D" parent="Item1/held"]
+[node name="held" type="Polygon2D" parent="ui/Item1/held"]
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(0, -100, -100, 100, 100, 100)
 
-[node name="Cursor" type="Node2D" parent="." node_paths=PackedStringArray("placetarget")]
+[node name="Cursor" type="Node2D" parent="ui"]
 script = ExtResource("2_nma6k")
-placetarget = NodePath("../placetarget")
 
-[node name="sprite" type="AnimatedSprite2D" parent="Cursor"]
+[node name="sprite" type="AnimatedSprite2D" parent="ui/Cursor"]
 position = Vector2(20, 10)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_7ix31")
 
-[node name="damp" type="Area2D" parent="."]
-linear_damp_space_override = 1
-linear_damp = 5.0
+[node name="Camera2D" type="Camera2D" parent="."]
+process_priority = 1
+offset = Vector2(960, 0)
+script = ExtResource("105_ny4tv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damp"]
-position = Vector2(572.5, 489.75)
-shape = SubResource("RectangleShape2D_p6cl1")
+[node name="wall_left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_left"]
+shape = SubResource("WorldBoundaryShape2D_kpgym")
+
+[node name="wall_right" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_right"]
+position = Vector2(1920, 0)
+shape = SubResource("WorldBoundaryShape2D_sxgfc")
