@@ -30,10 +30,10 @@ func _input(event: InputEvent) -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var position := get_viewport().get_mouse_position()
-	sprite.visible = get_viewport().get_visible_rect().has_point(position)
-	self.position = position
+func _process(_delta: float) -> void:
+	var point := get_viewport().get_mouse_position()
+	sprite.visible = get_viewport().get_visible_rect().has_point(point)
+	self.position = point
 	hover = null
 	if mouse.scrollnimation > 0:
 		if hold != null:
@@ -41,9 +41,9 @@ func _process(delta: float) -> void:
 		hold = null
 	else:
 		var space_state := get_world_2d().direct_space_state
-		var query = PhysicsPointQueryParameters2D.new()
+		var query := PhysicsPointQueryParameters2D.new()
 		query.canvas_instance_id = get_parent().get_instance_id()
-		query.position = position
+		query.position = point
 		query.collide_with_areas = true
 		query.collide_with_bodies = false
 		query.collision_mask = 1
@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 				break
 	if hold != null:
 		hold.held.visible = sprite.visible
-		hold.held.position = position
+		hold.held.position = point
 		if sprite.animation != "pickup":
 			sprite.play("pickup")
 	elif hover != null:
@@ -66,4 +66,7 @@ func _process(delta: float) -> void:
 
 func _on_restart() -> void:
 	for placed in placetarget.get_children():
+		var poof := preload("res://items/poof.tscn").instantiate() as Node2D
+		poof.position = placed.position
+		placetarget.add_child(poof)
 		placed.queue_free()
