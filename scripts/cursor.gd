@@ -8,7 +8,7 @@ var hold: Item = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 func _input(event: InputEvent) -> void:
@@ -22,6 +22,8 @@ func _input(event: InputEvent) -> void:
 				placed.position = event.position
 				placetarget.add_child(placed)
 			hold = null
+	elif event is InputEventMouseMotion:
+		self.position = event.position
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
