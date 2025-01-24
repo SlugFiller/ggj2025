@@ -148,7 +148,7 @@ rotation = 1.5708
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_13pmi")
 autoplay = "default"
-frame_progress = 0.5943
+frame_progress = 0.572846
 
 [node name="fan" type="Area2D" parent="."]
 collision_layer = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=138 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_deb8d"]
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
@@ -126,6 +126,8 @@
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
 [ext_resource type="PackedScene" uid="uid://dnltbxbdvgli5" path="res://map/map.tscn" id="107_sbdnp"]
 [ext_resource type="Texture2D" uid="uid://d4jncr1ihdlcg" path="res://graphics/ui/sidemenu.png" id="109_dpyqo"]
+[ext_resource type="PackedScene" uid="uid://d2rh1bue42f67" path="res://items/spring.tscn" id="114_5loy6"]
+[ext_resource type="Texture2D" uid="uid://bjectt37xygra" path="res://graphics/items/spring/frame000.png" id="114_5nuq7"]
 [ext_resource type="PackedScene" uid="uid://hkogf8nblgtr" path="res://map/tunnel.tscn" id="116_oowc5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qcgu"]
@@ -465,6 +467,12 @@ radius = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvtc3"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p8ynt"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cu0mj"]
+normal = Vector2(-1, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4j61"]
 size = Vector2(200, 200)
 
@@ -560,6 +568,15 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/tunnel_detector"]
 shape = SubResource("RectangleShape2D_yvtc3")
 
+[node name="walls" type="StaticBody2D" parent="."]
+
+[node name="left" type="CollisionShape2D" parent="walls"]
+shape = SubResource("WorldBoundaryShape2D_p8ynt")
+
+[node name="right" type="CollisionShape2D" parent="walls"]
+position = Vector2(1600, 0)
+shape = SubResource("WorldBoundaryShape2D_cu0mj")
+
 [node name="map" parent="." instance=ExtResource("107_sbdnp")]
 
 [node name="tunnel" parent="." instance=ExtResource("116_oowc5")]
@@ -602,6 +619,27 @@ rotation = 1.5708
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("96_u06ny")
 
+[node name="Item2" type="Area2D" parent="ui"]
+script = ExtResource("15_8s55e")
+item = ExtResource("114_5loy6")
+
+[node name="Frame000" type="Sprite2D" parent="ui/Item2"]
+position = Vector2(1805, 436)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("114_5nuq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item2"]
+position = Vector2(1802, 456)
+shape = SubResource("RectangleShape2D_k4j61")
+
+[node name="held" type="Node2D" parent="ui/Item2"]
+visible = false
+
+[node name="sprite" type="Sprite2D" parent="ui/Item2/held"]
+position = Vector2(-20, -10)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("114_5nuq7")
+
 [node name="Cursor" type="Node2D" parent="ui"]
 script = ExtResource("2_nma6k")
 
@@ -616,4 +654,5 @@ offset = Vector2(960, 0)
 script = ExtResource("105_ny4tv")
 
 [connection signal="restart" from="." to="ui/Item1" method="_on_restart"]
+[connection signal="restart" from="." to="ui/Item2" method="_on_restart"]
 [connection signal="restart" from="." to="ui/Cursor" method="_on_restart"]

@@ -27,6 +27,7 @@ const MIN_RUN_SPEED := 1.0
 const GRAVITY := 100.0
 const FAN_GRAVITY := 300.0
 const MAX_FALL := 500.0
+const JUMP_SPEED := 300.0
 const DEAD_TIME := 2.0
 const TUNNEL_TIME := 3.0
 const TIME_SCROLL := 1.0
@@ -85,7 +86,6 @@ func _physics_process(delta: float) -> void:
 				self.velocity.x = -speed
 			MouseDir.RIGHT:
 				self.velocity.x = speed
-		self.velocity.y = 0
 	else:
 		var gravity: float = GRAVITY
 		if fan_detector.has_overlapping_areas():
@@ -133,3 +133,8 @@ func _process(delta: float) -> void:
 			self.y_shift = (self.checkpoint.y - self.position.y) * (1.0 - self.scrollnimation / TIME_SCROLL)
 		if self.deathfall && self.scrollnimation < TIME_DEATH_FALL:
 			sprite.position.y += DEATH_FALL_SPEED * delta
+
+func jump() -> void:
+	if self.scrollnimation > 0.0:
+		return
+	self.velocity.y = -JUMP_SPEED
