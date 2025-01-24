@@ -458,7 +458,8 @@ normal = Vector2(-1, 0)
 [node name="Node2D" type="Node2D"]
 
 [node name="Mouse" type="CharacterBody2D" parent="."]
-position = Vector2(288, -101)
+position = Vector2(714, 85)
+floor_snap_length = 20.0
 script = ExtResource("1_deb8d")
 
 [node name="sprite" type="AnimatedSprite2D" parent="Mouse"]
@@ -470,16 +471,16 @@ animation = &"idle"
 shape = SubResource("CircleShape2D_cx7wd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(239, 70)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-24, 14, 55, 41, 46, 77, -40, 40)
+position = Vector2(509, 120)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-24, 14, 55, 41, 46, 77, -40, 40)
+polygon = PackedVector2Array(-56, 194, 77, 120, 765, 116, 758, -23, 879, -35, 876, 181, 121, 187, -64, 268)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-56, 194, 77, 120, 765, 116, 758, -23, 879, -35, 876, 181, 121, 187, -64, 268)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(319, 237)
+position = Vector2(1188, 320)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 polygon = PackedVector2Array(-24, 14, 115, 19, 26, 97, -40, 40)
