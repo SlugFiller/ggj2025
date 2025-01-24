@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=121 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_deb8d"]
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
@@ -107,7 +107,9 @@
 [ext_resource type="Texture2D" uid="uid://btnh81hmakl44" path="res://graphics/mouse/run/frame007.png" id="90_06a34"]
 [ext_resource type="Script" path="res://scripts/tunnel.gd" id="91_yf7xd"]
 [ext_resource type="Script" path="res://scripts/itemcount.gd" id="92_ni3rh"]
+[ext_resource type="Texture2D" uid="uid://bb71xreoov5sj" path="res://graphics/items/fan/frame00.png" id="96_u06ny"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
+[ext_resource type="Texture2D" uid="uid://d4jncr1ihdlcg" path="res://graphics/ui/sidemenu.png" id="109_dpyqo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qcgu"]
 animations = [{
@@ -546,25 +548,30 @@ count = 5
 
 [node name="ui" type="CanvasLayer" parent="."]
 
+[node name="Sidemenu" type="Sprite2D" parent="ui"]
+position = Vector2(1850, 539)
+texture = ExtResource("109_dpyqo")
+
 [node name="Item1" type="Area2D" parent="ui"]
 script = ExtResource("15_8s55e")
 item = ExtResource("2_axotv")
 
-[node name="Polygon2D" type="Polygon2D" parent="ui/Item1"]
-position = Vector2(1819, 101)
-color = Color(1, 1, 0, 1)
-polygon = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
+[node name="Frame000" type="Sprite2D" parent="ui/Item1"]
+position = Vector2(1781, 182)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("96_u06ny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item1"]
-position = Vector2(1819, 101)
+position = Vector2(1802, 234)
 shape = SubResource("RectangleShape2D_k4j61")
 
 [node name="held" type="Node2D" parent="ui/Item1"]
-visible = false
 
-[node name="held" type="Polygon2D" parent="ui/Item1/held"]
-color = Color(1, 0, 0, 1)
-polygon = PackedVector2Array(0, -100, -100, 100, 100, 100)
+[node name="sprite" type="Sprite2D" parent="ui/Item1/held"]
+position = Vector2(60, -10)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("96_u06ny")
 
 [node name="Cursor" type="Node2D" parent="ui"]
 script = ExtResource("2_nma6k")
