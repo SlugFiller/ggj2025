@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		sprite.play("idle")
 		move_and_slide()
 		return
-	if death_detector.has_overlapping_areas():
+	if death_detector.has_overlapping_bodies():
 		self.deathfall = true
 		self.scrollnimation = DEAD_TIME
 		sprite.play("death")
