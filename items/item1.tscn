@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://0l87e2dki8x7"]
+
+[node name="Item1" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -100, -100, 100, 100, 100)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, -100, -100, 100, 100, 100)
