@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://j8v670r2u40f"]
+
+[ext_resource type="Texture2D" uid="uid://chklg1o7rw3w6" path="res://graphics/map/fireball/frame000.png" id="1_ft1yn"]
+[ext_resource type="Texture2D" uid="uid://bn0smbqybgwb3" path="res://graphics/map/fireball/frame001.png" id="2_kiqbc"]
+[ext_resource type="Texture2D" uid="uid://b876rih30a31c" path="res://graphics/map/fireball/frame002.png" id="3_3jc44"]
+[ext_resource type="Texture2D" uid="uid://caqv2xhurseia" path="res://graphics/map/fireball/frame003.png" id="4_n1pqt"]
+[ext_resource type="Texture2D" uid="uid://c5hccot888uq1" path="res://graphics/map/fireball/frame004.png" id="5_emtvt"]
+[ext_resource type="Texture2D" uid="uid://b1exhmupkd8ec" path="res://graphics/map/fireball/frame005.png" id="6_njejh"]
+[ext_resource type="Texture2D" uid="uid://dm1csodux2nsk" path="res://graphics/map/fireball/frame006.png" id="7_6egxm"]
+[ext_resource type="Texture2D" uid="uid://btmwhov6vde86" path="res://graphics/map/fireball/frame007.png" id="8_eqnus"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wt6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ft1yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kiqbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3jc44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n1pqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_emtvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_njejh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6egxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_eqnus")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2e41y"]
+radius = 100.0
+
+[node name="Fireball" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, -13)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4wt6r")
+autoplay = "default"
+frame_progress = 0.944927
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_2e41y")
