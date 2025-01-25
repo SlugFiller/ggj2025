@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://28xqdvjvnsnx"]
+[gd_scene load_steps=32 format=3 uid="uid://28xqdvjvnsnx"]
 
 [ext_resource type="Texture2D" uid="uid://c6kxwnjj4qbds" path="res://graphics/map/acid/active/left/frame000.png" id="1_gvhkn"]
 [ext_resource type="Script" path="res://scripts/acid_piece.gd" id="1_jvntx"]
@@ -26,6 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://gotooey4sj5r" path="res://graphics/map/acid/active/right/frame006.png" id="23_f3lq5"]
 [ext_resource type="Texture2D" uid="uid://bxnkulsf35vtw" path="res://graphics/map/acid/active/right/frame007.png" id="24_5jqee"]
 [ext_resource type="Script" path="res://scripts/freezable.gd" id="25_y4giv"]
+[ext_resource type="Texture2D" uid="uid://dgpdxyud81haq" path="res://graphics/map/acid/frozen/left.png" id="26_1ibj4"]
+[ext_resource type="Texture2D" uid="uid://chu4aturs5j8q" path="res://graphics/map/acid/frozen/middle.png" id="27_f42wc"]
+[ext_resource type="Texture2D" uid="uid://cnpoe6vw6m4iw" path="res://graphics/map/acid/frozen/right.png" id="28_ee66s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3qaqq"]
 animations = [{
@@ -118,7 +121,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_gvhkn")
+"texture": ExtResource("26_1ibj4")
 }],
 "loop": true,
 "name": &"frozen_left",
@@ -126,7 +129,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_x4r1f")
+"texture": ExtResource("27_f42wc")
 }],
 "loop": true,
 "name": &"frozen_middle",
@@ -134,7 +137,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_1xxjs")
+"texture": ExtResource("28_ee66s")
 }],
 "loop": true,
 "name": &"frozen_right",
@@ -150,7 +153,7 @@ script = ExtResource("1_jvntx")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_3qaqq")
-animation = &"active_left"
+animation = &"frozen_left"
 autoplay = "active_left"
 
 [node name="death" type="StaticBody2D" parent="."]
