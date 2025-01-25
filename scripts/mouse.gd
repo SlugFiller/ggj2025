@@ -7,6 +7,13 @@ enum MouseDir {
 }
 
 
+#Sounds
+@onready var death1: AudioStreamPlayer = $death1
+@onready var death2: AudioStreamPlayer = $death2
+@onready var jump1: AudioStreamPlayer = $jump1
+@onready var jump2: AudioStreamPlayer = $jump2
+
+
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var fan_detector: Area2D = $fan_detector
 @onready var death_detector: Area2D = $death_detector
@@ -68,6 +75,10 @@ func _physics_process(delta: float) -> void:
 		self.deathfall = true
 		self.scrollnimation = DEAD_TIME
 		sprite.play("death")
+		if randi_range(0, 1) > 0:
+			death1.play()
+		else:
+			death2.play()
 		return
 	for tunnel_candidate in tunnel_detector.get_overlapping_areas():
 		var tunnel := tunnel_candidate as Tunnel
@@ -143,6 +154,10 @@ func jump() -> void:
 	if self.scrollnimation > 0.0:
 		return
 	self.velocity.y = -JUMP_SPEED
+	if randi_range(0, 1) > 0:
+		jump1.play()
+	else:
+		jump2.play()
 
 func _on_checkpoint(tunnel: Tunnel) -> void:
 	if tunnel.target != null:

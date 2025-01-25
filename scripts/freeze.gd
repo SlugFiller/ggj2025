@@ -18,4 +18,5 @@ func _process(_delta: float) -> void:
 	var poof := preload("res://items/poof.tscn").instantiate() as Node2D
 	poof.position = self.position
 	get_parent().add_child(poof)
+	get_parent().add_child(preload("res://items/freeze_effect.tscn").instantiate())
 	queue_free()

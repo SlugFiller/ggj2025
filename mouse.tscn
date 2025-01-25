@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://dw4a70wxxaoj8"]
+[gd_scene load_steps=114 format=3 uid="uid://dw4a70wxxaoj8"]
 
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_gjmi0"]
 [ext_resource type="Texture2D" uid="uid://ck6irbhwwlk3i" path="res://graphics/mouse/death/frame000.png" id="2_0jfyg"]
@@ -105,6 +105,10 @@
 [ext_resource type="Texture2D" uid="uid://dg2cbfoim6kv7" path="res://graphics/mouse/run/frame005.png" id="103_yoqql"]
 [ext_resource type="Texture2D" uid="uid://b52ok58n77sdr" path="res://graphics/mouse/run/frame006.png" id="104_ehrqj"]
 [ext_resource type="Texture2D" uid="uid://btnh81hmakl44" path="res://graphics/mouse/run/frame007.png" id="105_yr4pf"]
+[ext_resource type="AudioStream" uid="uid://bvug0o2uaa2wj" path="res://sounds/dead_mouse_1.wav" id="106_effah"]
+[ext_resource type="AudioStream" uid="uid://cmkt637ack7j7" path="res://sounds/dead_mouse_2.wav" id="107_odj17"]
+[ext_resource type="AudioStream" uid="uid://cbyr8hc5tvbxl" path="res://sounds/string_1.wav" id="108_ndbi3"]
+[ext_resource type="AudioStream" uid="uid://du0nr8hm41egi" path="res://sounds/string_2.wav" id="109_fb8mo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qcgu"]
 animations = [{
@@ -478,3 +482,15 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tunnel_detector"]
 shape = SubResource("RectangleShape2D_yvtc3")
+
+[node name="death1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("106_effah")
+
+[node name="death2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("107_odj17")
+
+[node name="jump1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("108_ndbi3")
+
+[node name="jump2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("109_fb8mo")

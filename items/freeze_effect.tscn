@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjvbqwohqt2nk"]
+
+[ext_resource type="Script" path="res://scripts/freeze_effect.gd" id="1_8vlku"]
+[ext_resource type="AudioStream" uid="uid://bo0mgdrkotyw5" path="res://sounds/Ice_ball_sfx_1.wav" id="2_k823h"]
+[ext_resource type="AudioStream" uid="uid://cr10es8mpvk3q" path="res://sounds/Ice_ball_sfx_2.wav" id="3_6x08h"]
+
+[node name="FreezeEffect" type="Node2D"]
+script = ExtResource("1_8vlku")
+
+[node name="freeze1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_k823h")
+
+[node name="freeze2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6x08h")
+
+[connection signal="finished" from="freeze1" to="." method="_on_finished"]
+[connection signal="finished" from="freeze2" to="." method="_on_finished"]
