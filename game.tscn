@@ -116,6 +116,7 @@ texture = ExtResource("109_dpyqo")
 
 [node name="Item1" type="Area2D" parent="ui"]
 script = ExtResource("15_8s55e")
+count = 2
 item = ExtResource("2_axotv")
 
 [node name="Frame000" type="Sprite2D" parent="ui/Item1"]
