@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=31 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
 [ext_resource type="PackedScene" uid="uid://0l87e2dki8x7" path="res://items/fan.tscn" id="2_axotv"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://coj6ntjybxis6" path="res://graphics/cursor/PickUp2.png" id="13_oexhb"]
 [ext_resource type="Texture2D" uid="uid://bu05eob7t3a7p" path="res://graphics/cursor/PickUp3.png" id="14_775qd"]
 [ext_resource type="Script" path="res://scripts/item.gd" id="15_8s55e"]
+[ext_resource type="AudioStream" uid="uid://dwhy0x0jkfmjd" path="res://sounds/music.ogg" id="26_6arpc"]
 [ext_resource type="Texture2D" uid="uid://bb71xreoov5sj" path="res://graphics/items/fan/frame00.png" id="96_u06ny"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
 [ext_resource type="PackedScene" uid="uid://dnltbxbdvgli5" path="res://map/map.tscn" id="107_sbdnp"]
@@ -195,3 +196,8 @@ sprite_frames = SubResource("SpriteFrames_7ix31")
 process_priority = 1
 offset = Vector2(960, 0)
 script = ExtResource("105_ny4tv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_6arpc")
+autoplay = true
+parameters/looping = false

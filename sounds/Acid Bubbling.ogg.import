@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ciot5mmdaiffj"
+path="res://.godot/imported/Acid Bubbling.ogg-c3e4ef82e9acff651b235b5ae13d30cc.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/Acid Bubbling.ogg"
+dest_files=["res://.godot/imported/Acid Bubbling.ogg-c3e4ef82e9acff651b235b5ae13d30cc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

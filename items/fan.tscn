@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://0l87e2dki8x7"]
+[gd_scene load_steps=36 format=3 uid="uid://0l87e2dki8x7"]
 
 [ext_resource type="Texture2D" uid="uid://bb71xreoov5sj" path="res://graphics/items/fan/frame00.png" id="1_3s161"]
 [ext_resource type="Texture2D" uid="uid://bijnwf01xh3ku" path="res://graphics/items/fan/frame01.png" id="2_lm6qy"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://elqkah7qrvop" path="res://graphics/items/fan/frame29.png" id="30_p1bty"]
 [ext_resource type="Texture2D" uid="uid://cpralqyeqolek" path="res://graphics/items/fan/frame30.png" id="31_mrpwv"]
 [ext_resource type="Texture2D" uid="uid://csskbikfyxajm" path="res://graphics/items/fan/frame31.png" id="32_yro56"]
+[ext_resource type="AudioStream" uid="uid://gcbg6j4o5abg" path="res://sounds/Wind.ogg" id="33_c7e4o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_13pmi"]
 animations = [{
@@ -160,3 +161,8 @@ gravity = 300.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fan"]
 position = Vector2(-2, 189.875)
 shape = SubResource("RectangleShape2D_bybjn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_c7e4o")
+autoplay = true
+parameters/looping = false
