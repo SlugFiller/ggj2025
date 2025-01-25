@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=138 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_deb8d"]
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
@@ -127,7 +127,6 @@
 [ext_resource type="Texture2D" uid="uid://d4jncr1ihdlcg" path="res://graphics/ui/sidemenu.png" id="109_dpyqo"]
 [ext_resource type="PackedScene" uid="uid://d2rh1bue42f67" path="res://items/spring.tscn" id="114_5loy6"]
 [ext_resource type="Texture2D" uid="uid://bjectt37xygra" path="res://graphics/items/spring/frame000.png" id="114_5nuq7"]
-[ext_resource type="PackedScene" uid="uid://hkogf8nblgtr" path="res://map/tunnel.tscn" id="116_oowc5"]
 [ext_resource type="PackedScene" uid="uid://d4i6u1crise35" path="res://items/freeze.tscn" id="117_ijy73"]
 [ext_resource type="Texture2D" uid="uid://b1h0rql2pm88m" path="res://graphics/items/freeze/frame000.png" id="118_y3rme"]
 
@@ -544,14 +543,6 @@ position = Vector2(1600, 0)
 shape = SubResource("WorldBoundaryShape2D_cu0mj")
 
 [node name="map" parent="." instance=ExtResource("107_sbdnp")]
-
-[node name="tunnel" parent="." node_paths=PackedStringArray("target") instance=ExtResource("116_oowc5")]
-position = Vector2(929, 1001)
-target = NodePath("../tunnel_target")
-item_counts = Array[int]([1])
-
-[node name="tunnel_target" type="Node2D" parent="."]
-position = Vector2(621, 1285)
 
 [node name="placetarget" type="Node2D" parent="."]
 
