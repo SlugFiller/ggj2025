@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bk21rnair2qj1"]
+[gd_scene load_steps=11 format=3 uid="uid://bk21rnair2qj1"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_leg54"]
 [ext_resource type="Texture2D" uid="uid://1fmjcvkxk6na" path="res://graphics/ui/Menu_BG.png" id="1_uahgc"]
+[ext_resource type="Texture2D" uid="uid://gjbwbfyqctc4" path="res://graphics/map/Backgrounds/background lvl2.png" id="2_6yimy"]
 [ext_resource type="Texture2D" uid="uid://blb548a7nu3s8" path="res://graphics/ui/Logo.png" id="2_lsic3"]
 [ext_resource type="Texture2D" uid="uid://cu0enh4psg8gf" path="res://graphics/ui/buttons/Buttons_Neutral/New_Game.png" id="4_rp4oi"]
 [ext_resource type="Texture2D" uid="uid://bmovdyjwa2cwl" path="res://graphics/ui/buttons/Buttons_Pressed/New_Game.png" id="5_ipyul"]
@@ -12,6 +13,10 @@
 
 [node name="Mainmenu" type="Node2D"]
 script = ExtResource("1_leg54")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(956, 532)
+texture = ExtResource("2_6yimy")
 
 [node name="MenuBg" type="Sprite2D" parent="."]
 position = Vector2(960, 660)
