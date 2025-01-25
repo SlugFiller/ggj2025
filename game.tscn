@@ -200,4 +200,4 @@ script = ExtResource("105_ny4tv")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_6arpc")
 autoplay = true
-parameters/looping = false
+parameters/looping = true
