@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=35 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
 [ext_resource type="PackedScene" uid="uid://0l87e2dki8x7" path="res://items/fan.tscn" id="2_axotv"]
@@ -17,7 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://coj6ntjybxis6" path="res://graphics/cursor/PickUp2.png" id="13_oexhb"]
 [ext_resource type="Texture2D" uid="uid://bu05eob7t3a7p" path="res://graphics/cursor/PickUp3.png" id="14_775qd"]
 [ext_resource type="Script" path="res://scripts/item.gd" id="15_8s55e"]
+[ext_resource type="AudioStream" uid="uid://d1e3rnfe3xya3" path="res://sounds/voice/tool1.wav" id="25_rcwmv"]
 [ext_resource type="AudioStream" uid="uid://dwhy0x0jkfmjd" path="res://sounds/music.ogg" id="26_6arpc"]
+[ext_resource type="AudioStream" uid="uid://bji1bky6lsp67" path="res://sounds/voice/tool2.wav" id="26_hwgx5"]
+[ext_resource type="AudioStream" uid="uid://wctcpt5ejpdh" path="res://sounds/voice/tool3.wav" id="27_kse0w"]
+[ext_resource type="AudioStream" uid="uid://qqu4ra6ipk6e" path="res://sounds/voice/tool4.wav" id="28_0k8k5"]
 [ext_resource type="Texture2D" uid="uid://bb71xreoov5sj" path="res://graphics/items/fan/frame00.png" id="96_u06ny"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
 [ext_resource type="PackedScene" uid="uid://dnltbxbdvgli5" path="res://map/map.tscn" id="107_sbdnp"]
@@ -191,6 +195,18 @@ script = ExtResource("2_nma6k")
 position = Vector2(20, 10)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_7ix31")
+
+[node name="voice_item_1" type="AudioStreamPlayer" parent="ui/Cursor"]
+stream = ExtResource("25_rcwmv")
+
+[node name="voice_item_2" type="AudioStreamPlayer" parent="ui/Cursor"]
+stream = ExtResource("26_hwgx5")
+
+[node name="voice_item_3" type="AudioStreamPlayer" parent="ui/Cursor"]
+stream = ExtResource("27_kse0w")
+
+[node name="voice_item_4" type="AudioStreamPlayer" parent="ui/Cursor"]
+stream = ExtResource("28_0k8k5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1

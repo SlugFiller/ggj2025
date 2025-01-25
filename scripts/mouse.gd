@@ -13,6 +13,10 @@ enum MouseDir {
 @onready var jump1: AudioStreamPlayer = $jump1
 @onready var jump2: AudioStreamPlayer = $jump2
 
+@onready var voice_death_1: AudioStreamPlayer = $voice_death1
+@onready var voice_death_2: AudioStreamPlayer = $voice_death2
+@onready var voice_death_3: AudioStreamPlayer = $voice_death3
+
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var fan_detector: Area2D = $fan_detector
@@ -79,6 +83,13 @@ func _physics_process(delta: float) -> void:
 			death1.play()
 		else:
 			death2.play()
+		match randi_range(0, 7):
+			0:
+				voice_death_1.play()
+			1:
+				voice_death_2.play()
+			3:
+				voice_death_3.play()
 		return
 	for tunnel_candidate in tunnel_detector.get_overlapping_areas():
 		var tunnel := tunnel_candidate as Tunnel

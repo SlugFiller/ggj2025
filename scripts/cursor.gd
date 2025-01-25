@@ -1,6 +1,14 @@
 extends Node2D
 class_name Cursor
 
+# Voice
+@onready var voice_item_1: AudioStreamPlayer = $voice_item_1
+@onready var voice_item_2: AudioStreamPlayer = $voice_item_2
+@onready var voice_item_3: AudioStreamPlayer = $voice_item_3
+@onready var voice_item_4: AudioStreamPlayer = $voice_item_4
+
+
+
 @onready var mouse: Mouse = $"../../Mouse"
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var placetarget: Node2D = $"../../placetarget"
@@ -31,6 +39,15 @@ func _input(event: InputEvent) -> void:
 				var placed := hold.item.instantiate() as Node2D
 				placed.position = event.position + camera.position + Vector2(0, -540)
 				placetarget.add_child(placed)
+				match randi_range(0, 7):
+					0:
+						voice_item_1.play()
+					1:
+						voice_item_2.play()
+					2:
+						voice_item_3.play()
+					3:
+						voice_item_4.play()
 			hold = null
 	elif event is InputEventMouseMotion:
 		self.position = event.position

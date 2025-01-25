@@ -4,7 +4,7 @@ extends Node2D
 @export var ratio: float = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var relative := get_viewport().get_camera_2d().global_position.y - self.global_position.y
 	relative *= ratio
 	relative = clampf(relative, -max_range, max_range)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://dw4a70wxxaoj8"]
+[gd_scene load_steps=117 format=3 uid="uid://dw4a70wxxaoj8"]
 
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_gjmi0"]
 [ext_resource type="Texture2D" uid="uid://ck6irbhwwlk3i" path="res://graphics/mouse/death/frame000.png" id="2_0jfyg"]
@@ -109,6 +109,9 @@
 [ext_resource type="AudioStream" uid="uid://cmkt637ack7j7" path="res://sounds/dead_mouse_2.wav" id="107_odj17"]
 [ext_resource type="AudioStream" uid="uid://cbyr8hc5tvbxl" path="res://sounds/string_1.wav" id="108_ndbi3"]
 [ext_resource type="AudioStream" uid="uid://du0nr8hm41egi" path="res://sounds/string_2.wav" id="109_fb8mo"]
+[ext_resource type="AudioStream" uid="uid://df7wugybqu25i" path="res://sounds/voice/death1.wav" id="110_hkl2w"]
+[ext_resource type="AudioStream" uid="uid://e0jwqsb03vfn" path="res://sounds/voice/death2.wav" id="111_nym17"]
+[ext_resource type="AudioStream" uid="uid://b1k4ih7j5yljx" path="res://sounds/voice/death3.wav" id="112_uwgg6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qcgu"]
 animations = [{
@@ -494,3 +497,12 @@ stream = ExtResource("108_ndbi3")
 
 [node name="jump2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("109_fb8mo")
+
+[node name="voice_death1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("110_hkl2w")
+
+[node name="voice_death2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("111_nym17")
+
+[node name="voice_death3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("112_uwgg6")
