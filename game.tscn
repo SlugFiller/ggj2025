@@ -130,6 +130,12 @@
 [ext_resource type="Texture2D" uid="uid://bjectt37xygra" path="res://graphics/items/spring/frame000.png" id="114_5nuq7"]
 [ext_resource type="PackedScene" uid="uid://hkogf8nblgtr" path="res://map/tunnel.tscn" id="116_oowc5"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p8ynt"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cu0mj"]
+normal = Vector2(-1, 0)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qcgu"]
 animations = [{
 "frames": [{
@@ -467,12 +473,6 @@ radius = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvtc3"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p8ynt"]
-normal = Vector2(1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cu0mj"]
-normal = Vector2(-1, 0)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4j61"]
 size = Vector2(200, 200)
 
@@ -533,6 +533,34 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_lnqoj")
 
+[node name="walls" type="StaticBody2D" parent="."]
+
+[node name="left" type="CollisionShape2D" parent="walls"]
+shape = SubResource("WorldBoundaryShape2D_p8ynt")
+
+[node name="right" type="CollisionShape2D" parent="walls"]
+position = Vector2(1600, 0)
+shape = SubResource("WorldBoundaryShape2D_cu0mj")
+
+[node name="map" parent="." instance=ExtResource("107_sbdnp")]
+
+[node name="tunnel" parent="." instance=ExtResource("116_oowc5")]
+position = Vector2(929, 1001)
+
+[node name="target" type="Node2D" parent="tunnel"]
+position = Vector2(-308, 284)
+
+[node name="Node" type="Node" parent="tunnel/target" node_paths=PackedStringArray("item")]
+script = ExtResource("92_ni3rh")
+item = NodePath("../../../ui/Item1")
+count = 5
+
+[node name="Node2" type="Node" parent="tunnel/target" node_paths=PackedStringArray("item")]
+script = ExtResource("92_ni3rh")
+item = NodePath("../../../ui/Item2")
+
+[node name="placetarget" type="Node2D" parent="."]
+
 [node name="Mouse" type="CharacterBody2D" parent="."]
 position = Vector2(714, 85)
 floor_snap_length = 20.0
@@ -567,29 +595,6 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/tunnel_detector"]
 shape = SubResource("RectangleShape2D_yvtc3")
-
-[node name="walls" type="StaticBody2D" parent="."]
-
-[node name="left" type="CollisionShape2D" parent="walls"]
-shape = SubResource("WorldBoundaryShape2D_p8ynt")
-
-[node name="right" type="CollisionShape2D" parent="walls"]
-position = Vector2(1600, 0)
-shape = SubResource("WorldBoundaryShape2D_cu0mj")
-
-[node name="map" parent="." instance=ExtResource("107_sbdnp")]
-
-[node name="tunnel" parent="." instance=ExtResource("116_oowc5")]
-
-[node name="target" type="Node2D" parent="tunnel"]
-position = Vector2(-308, 284)
-
-[node name="Node" type="Node" parent="tunnel/target" node_paths=PackedStringArray("item")]
-script = ExtResource("92_ni3rh")
-item = NodePath("../../../ui/Item1")
-count = 5
-
-[node name="placetarget" type="Node2D" parent="."]
 
 [node name="ui" type="CanvasLayer" parent="."]
 
