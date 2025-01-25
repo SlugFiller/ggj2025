@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://b26tf8saiu4ak"]
+
+[ext_resource type="Script" path="res://scripts/gem.gd" id="1_ktk5p"]
+[ext_resource type="Texture2D" uid="uid://cmr8hr2jxb473" path="res://graphics/map/gem/diamond.png" id="2_8pm17"]
+[ext_resource type="Texture2D" uid="uid://c5a2oy22wy33p" path="res://graphics/map/gem/emerald.png" id="3_ufpr7"]
+[ext_resource type="Texture2D" uid="uid://d3bs3508bgiik" path="res://graphics/map/gem/ruby.png" id="4_idxk7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5cxja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8pm17")
+}],
+"loop": true,
+"name": &"diamond",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ufpr7")
+}],
+"loop": true,
+"name": &"emerald",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_idxk7")
+}],
+"loop": true,
+"name": &"ruby",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0n5m"]
+radius = 50.0
+
+[node name="Gem" type="Node2D"]
+script = ExtResource("1_ktk5p")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5cxja")
+animation = &"diamond"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_w0n5m")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

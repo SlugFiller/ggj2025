@@ -25,11 +25,12 @@ window/stretch/mode="canvas_items"
 
 [layer_names]
 
-2d_physics/layer_1="Walls and mouse"
+2d_physics/layer_1="Walls"
 2d_physics/layer_2="Fans"
 2d_physics/layer_3="Death"
 2d_physics/layer_4="Tunnel"
 2d_physics/layer_5="Freeze"
+2d_physics/layer_6="Mouse"
 
 [physics]
 
