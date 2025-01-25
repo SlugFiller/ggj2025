@@ -14,7 +14,7 @@ func _ready() -> void:
 		var broadcast := parent as Broadcast
 		if broadcast != null:
 			broadcast.restart.connect(self._on_restart)
-			broadcast.checkpoint.connect(self._on_restart)
+			broadcast.checkpoint.connect(self._on_checkpoint)
 			break
 		parent = parent.get_parent()
 
