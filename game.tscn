@@ -162,6 +162,7 @@ texture = ExtResource("114_5nuq7")
 
 [node name="Item3" type="Area2D" parent="ui"]
 script = ExtResource("15_8s55e")
+count = 2
 item = ExtResource("117_ijy73")
 item_index = 2
 

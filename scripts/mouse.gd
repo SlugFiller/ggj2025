@@ -17,6 +17,7 @@ var checkpoint_direction: MouseDir
 var scrollnimation: float = 0.0
 var deathfall: bool = false
 var respawn: bool = false
+var is_ending: bool = false
 var y_shift: float = 0.0
 var broadcast: Broadcast
 
@@ -129,6 +130,9 @@ func _process(delta: float) -> void:
 			self.scrollnimation = 0
 			self.respawn = true
 		if self.scrollnimation < TIME_SCROLL:
+			if self.is_ending:
+				get_tree().change_scene_to_file("res://intro.tscn")
+				return
 			if should_poof:
 				broadcast.restart.emit()
 			self.y_shift = (self.checkpoint.y - self.position.y) * (1.0 - self.scrollnimation / TIME_SCROLL)
@@ -141,5 +145,9 @@ func jump() -> void:
 	self.velocity.y = -JUMP_SPEED
 
 func _on_checkpoint(tunnel: Tunnel) -> void:
-	self.checkpoint = tunnel.target.global_position
+	if tunnel.target != null:
+		self.checkpoint = tunnel.target.global_position
+	else:
+		self.checkpoint = self.position
+		self.is_ending = true
 	self.checkpoint_direction = tunnel.direction
