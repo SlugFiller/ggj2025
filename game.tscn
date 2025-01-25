@@ -106,7 +106,7 @@ shape = SubResource("WorldBoundaryShape2D_cu0mj")
 [node name="placetarget" type="Node2D" parent="."]
 
 [node name="Mouse" parent="." instance=ExtResource("3_o6nf2")]
-position = Vector2(714, 85)
+position = Vector2(225, 133)
 
 [node name="ui" type="CanvasLayer" parent="."]
 
@@ -138,6 +138,7 @@ texture = ExtResource("96_u06ny")
 
 [node name="Item2" type="Area2D" parent="ui"]
 script = ExtResource("15_8s55e")
+count = 4
 item = ExtResource("114_5loy6")
 item_index = 1
 

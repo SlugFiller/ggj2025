@@ -42,13 +42,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2e41y"]
-radius = 100.0
+radius = 60.0
 
 [node name="Fireball" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(9, -13)
-scale = Vector2(0.4, 0.4)
+position = Vector2(2, -6)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_4wt6r")
 autoplay = "default"
 frame_progress = 0.944927

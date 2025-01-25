@@ -20,14 +20,14 @@ var respawn: bool = false
 var y_shift: float = 0.0
 var broadcast: Broadcast
 
-const RUN_SPEED := 200.0
-const RUN_SPEED_DOWNSLOPE := 250.0
+const RUN_SPEED := 300.0
+const RUN_SPEED_DOWNSLOPE := 350.0
 const SLOPE_SPEED := 10.0
 const MIN_RUN_SPEED := 1.0
-const GRAVITY := 100.0
-const FAN_GRAVITY := 300.0
-const MAX_FALL := 500.0
-const JUMP_SPEED := 300.0
+const GRAVITY := 400.0
+const FAN_GRAVITY := 500.0
+const MAX_FALL := 99999.0
+const JUMP_SPEED := 400.0
 const DEAD_TIME := 2.0
 const TUNNEL_TIME := 3.0
 const TIME_SCROLL := 1.0
