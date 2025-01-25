@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1hcfxxj3oj8g"]
+
+[ext_resource type="Script" path="res://scripts/intro_cutscene.gd" id="1_cxs7k"]
+[ext_resource type="VideoStream" path="res://graphics/cutscene.ogv" id="2_uxax1"]
+
+[node name="IntroCutscene" type="Node2D"]
+script = ExtResource("1_cxs7k")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("2_uxax1")
+autoplay = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 8.0
+offset_bottom = 8.0
+flat = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
