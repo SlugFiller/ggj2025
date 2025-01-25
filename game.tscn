@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ck6irbhwwlk3i" path="res://graphics/mouse/death/frame000.png" id="3_a6lwl"]
 [ext_resource type="Texture2D" uid="uid://b8bmivrsf2jqi" path="res://graphics/mouse/idle/frame000.png" id="3_eg5m0"]
 [ext_resource type="Texture2D" uid="uid://bgormcm3l1sfw" path="res://graphics/cursor/Hand0.png" id="3_nxd8a"]
-[ext_resource type="PackedScene" uid="uid://28xqdvjvnsnx" path="res://map/acid_piece.tscn" id="4_1owgv"]
 [ext_resource type="Texture2D" uid="uid://cwfnoxybx7tq" path="res://graphics/mouse/idle/frame001.png" id="4_f5xo7"]
 [ext_resource type="Texture2D" uid="uid://dbj0a2brvhsmx" path="res://graphics/mouse/death/frame001.png" id="4_hbhrr"]
 [ext_resource type="Texture2D" uid="uid://be25c6mshi438" path="res://graphics/cursor/Hand1.png" id="4_kxvwk"]
@@ -129,7 +128,8 @@
 [ext_resource type="PackedScene" uid="uid://d2rh1bue42f67" path="res://items/spring.tscn" id="114_5loy6"]
 [ext_resource type="Texture2D" uid="uid://bjectt37xygra" path="res://graphics/items/spring/frame000.png" id="114_5nuq7"]
 [ext_resource type="PackedScene" uid="uid://hkogf8nblgtr" path="res://map/tunnel.tscn" id="116_oowc5"]
-[ext_resource type="PackedScene" uid="uid://c7b51vqj07fh8" path="res://map/acid.tscn" id="130_ppnu2"]
+[ext_resource type="PackedScene" uid="uid://d4i6u1crise35" path="res://items/freeze.tscn" id="117_ijy73"]
+[ext_resource type="Texture2D" uid="uid://b1h0rql2pm88m" path="res://graphics/items/freeze/frame000.png" id="118_y3rme"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p8ynt"]
 normal = Vector2(1, 0)
@@ -545,16 +545,6 @@ shape = SubResource("WorldBoundaryShape2D_cu0mj")
 
 [node name="map" parent="." instance=ExtResource("107_sbdnp")]
 
-[node name="Acid" parent="." instance=ExtResource("130_ppnu2")]
-position = Vector2(1200, 451)
-
-[node name="acid_piece" parent="Acid" instance=ExtResource("4_1owgv")]
-position = Vector2(-50, 0)
-
-[node name="acid_piece2" parent="Acid" instance=ExtResource("4_1owgv")]
-position = Vector2(50, 0)
-type = 2
-
 [node name="tunnel" parent="." node_paths=PackedStringArray("target") instance=ExtResource("116_oowc5")]
 position = Vector2(929, 1001)
 target = NodePath("../tunnel_target")
@@ -611,12 +601,12 @@ script = ExtResource("15_8s55e")
 item = ExtResource("2_axotv")
 
 [node name="Frame000" type="Sprite2D" parent="ui/Item1"]
-position = Vector2(1781, 182)
+position = Vector2(1781, 178)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("96_u06ny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item1"]
-position = Vector2(1802, 234)
+position = Vector2(1802, 230)
 shape = SubResource("RectangleShape2D_k4j61")
 
 [node name="held" type="Node2D" parent="ui/Item1"]
@@ -634,12 +624,12 @@ item = ExtResource("114_5loy6")
 item_index = 1
 
 [node name="Frame000" type="Sprite2D" parent="ui/Item2"]
-position = Vector2(1805, 436)
+position = Vector2(1805, 430)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("114_5nuq7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item2"]
-position = Vector2(1802, 456)
+position = Vector2(1802, 450)
 shape = SubResource("RectangleShape2D_k4j61")
 
 [node name="held" type="Node2D" parent="ui/Item2"]
@@ -649,6 +639,28 @@ visible = false
 position = Vector2(-20, -10)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("114_5nuq7")
+
+[node name="Item3" type="Area2D" parent="ui"]
+script = ExtResource("15_8s55e")
+item = ExtResource("117_ijy73")
+item_index = 2
+
+[node name="Frame000" type="Sprite2D" parent="ui/Item3"]
+position = Vector2(1820, 667)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("118_y3rme")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item3"]
+position = Vector2(1802, 670)
+shape = SubResource("RectangleShape2D_k4j61")
+
+[node name="held" type="Node2D" parent="ui/Item3"]
+visible = false
+
+[node name="sprite" type="Sprite2D" parent="ui/Item3/held"]
+position = Vector2(-20, -10)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("118_y3rme")
 
 [node name="Cursor" type="Node2D" parent="ui"]
 script = ExtResource("2_nma6k")

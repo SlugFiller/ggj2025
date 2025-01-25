@@ -29,6 +29,7 @@ window/stretch/mode="canvas_items"
 2d_physics/layer_2="Fans"
 2d_physics/layer_3="Death"
 2d_physics/layer_4="Tunnel"
+2d_physics/layer_5="Freeze"
 
 [physics]
 

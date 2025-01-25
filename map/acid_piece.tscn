@@ -167,6 +167,8 @@ shape = SubResource("RectangleShape2D_orqao")
 disabled = true
 
 [node name="freeze" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("25_y4giv")
 
 [node name="collision" type="CollisionShape2D" parent="freeze"]
