@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dnltbxbdvgli5"]
+[gd_scene load_steps=33 format=4 uid="uid://dnltbxbdvgli5"]
 
 [ext_resource type="Texture2D" uid="uid://b3lemxrggt373" path="res://graphics/map/Backgrounds/background lvl1.png" id="1_56xgc"]
 [ext_resource type="Texture2D" uid="uid://gjbwbfyqctc4" path="res://graphics/map/Backgrounds/background lvl2.png" id="1_sf70l"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b2aank37vv1yx" path="res://graphics/map/Backgrounds/background 3 balcony.png" id="5_jnq1a"]
 [ext_resource type="Texture2D" uid="uid://bdnlqcqulihmq" path="res://graphics/map/Floor tiles_Floor_Corner_Left.png" id="5_pta6m"]
 [ext_resource type="Texture2D" uid="uid://bq3ww1l7ncxbn" path="res://graphics/map/Floor tiles_Floor_Corner_Right.png" id="6_b1p2m"]
+[ext_resource type="Texture2D" uid="uid://cdjoectdcatp6" path="res://graphics/map/Backgrounds/Level4.png" id="6_wpxee"]
 [ext_resource type="Texture2D" uid="uid://d2aikbi0hjaab" path="res://graphics/map/Floor tiles_Left wall.png" id="7_kuooa"]
 [ext_resource type="Texture2D" uid="uid://cg15xhdwrjd4a" path="res://graphics/map/Floor tiles_Right wall.png" id="8_nx34o"]
 [ext_resource type="Texture2D" uid="uid://cpyiw2mnr0e57" path="res://graphics/map/Spikes.png" id="9_2j5v1"]
@@ -95,31 +96,39 @@ sources/8 = SubResource("TileSetAtlasSource_3m73g")
 [node name="map" type="Node2D"]
 
 [node name="BackgroundLvl1" type="Sprite2D" parent="."]
-position = Vector2(792.966, 574.999)
-scale = Vector2(0.711338, 0.80586)
+position = Vector2(799.5, 574.999)
+scale = Vector2(0.705543, 0.80586)
 texture = ExtResource("1_56xgc")
 
 [node name="Background3Back" type="Sprite2D" parent="."]
-position = Vector2(959, 4638)
+position = Vector2(793, 4811.5)
+scale = Vector2(0.827083, 1.28773)
 texture = ExtResource("2_5lopv")
+
+[node name="Background3Balcony" type="Sprite2D" parent="."]
+position = Vector2(745.5, 4849.5)
+scale = Vector2(0.889063, 0.951923)
+texture = ExtResource("5_jnq1a")
+
+[node name="Level4" type="Sprite2D" parent="."]
+position = Vector2(801, 7690)
+scale = Vector2(0.814583, 1)
+texture = ExtResource("6_wpxee")
 
 [node name="Parallax2" parent="." instance=ExtResource("2_30j4f")]
 position = Vector2(800, 2800)
 max_range = 200.0
-ratio = 0.55
+ratio = 0.0
 
 [node name="BackgroundLvl2" type="Sprite2D" parent="Parallax2"]
-scale = Vector2(0.8, 0.8)
+position = Vector2(0, 58.5)
+scale = Vector2(0.8, 1.01142)
 texture = ExtResource("1_sf70l")
 
 [node name="Parallax3" parent="." instance=ExtResource("2_30j4f")]
 position = Vector2(800, 2800)
 max_range = 200.0
-ratio = 0.55
-
-[node name="Background3Balcony" type="Sprite2D" parent="Parallax3"]
-position = Vector2(52, 2088)
-texture = ExtResource("5_jnq1a")
+ratio = 0.0
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 position = Vector2(0, 1)
