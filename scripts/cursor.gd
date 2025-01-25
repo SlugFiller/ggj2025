@@ -11,6 +11,13 @@ var hold: Item = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	var parent: Node = self
+	while parent != null:
+		var broadcast := parent as Broadcast
+		if broadcast != null:
+			broadcast.restart.connect(self._on_restart)
+			break
+		parent = parent.get_parent()
 
 
 func _input(event: InputEvent) -> void:

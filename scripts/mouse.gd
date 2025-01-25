@@ -7,7 +7,6 @@ enum MouseDir {
 }
 
 
-@onready var broadcast: Broadcast = $".."
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var fan_detector: Area2D = $fan_detector
 @onready var death_detector: Area2D = $death_detector
@@ -19,6 +18,7 @@ var scrollnimation: float = 0.0
 var deathfall: bool = false
 var respawn: bool = false
 var y_shift: float = 0.0
+var broadcast: Broadcast
 
 const RUN_SPEED := 200.0
 const RUN_SPEED_DOWNSLOPE := 250.0
@@ -37,6 +37,13 @@ const TIME_DEATH_FALL := 1.5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_checkpoint()
+	var parent: Node = self
+	while parent != null:
+		broadcast = parent as Broadcast
+		if broadcast != null:
+			broadcast.checkpoint.connect(_on_checkpoint)
+			break
+		parent = parent.get_parent()
 
 func set_checkpoint() -> void:
 	self.checkpoint = self.position
@@ -65,13 +72,7 @@ func _physics_process(delta: float) -> void:
 		var tunnel := tunnel_candidate as Tunnel
 		if tunnel == null:
 			continue
-		self.checkpoint = tunnel.target.global_position
-		self.checkpoint_direction = tunnel.direction
-		for item in tunnel.target.get_children():
-			var itemcount := item as ItemCount
-			if itemcount == null:
-				continue
-			itemcount.item.checkpoint_count = itemcount.count
+		broadcast.checkpoint.emit(tunnel)
 		self.scrollnimation = TUNNEL_TIME
 		return
 	var use_run_animation := true
@@ -138,3 +139,7 @@ func jump() -> void:
 	if self.scrollnimation > 0.0:
 		return
 	self.velocity.y = -JUMP_SPEED
+
+func _on_checkpoint(tunnel: Tunnel) -> void:
+	self.checkpoint = tunnel.target.global_position
+	self.checkpoint_direction = tunnel.direction

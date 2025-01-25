@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7b51vqj07fh8"]
+
+[ext_resource type="Script" path="res://scripts/acid.gd" id="1_28xj0"]
+[ext_resource type="Texture2D" uid="uid://cf0uunxm7bpnu" path="res://graphics/items/poof/frame007.png" id="2_sc3p5"]
+[ext_resource type="Texture2D" uid="uid://cso7kyr1xxm3" path="res://graphics/items/poof/frame000.png" id="3_1ft7u"]
+[ext_resource type="Texture2D" uid="uid://saksb1pqow0a" path="res://graphics/items/poof/frame001.png" id="4_8embo"]
+[ext_resource type="Texture2D" uid="uid://bb8kaiiihw880" path="res://graphics/items/poof/frame002.png" id="5_ahsu4"]
+[ext_resource type="Texture2D" uid="uid://37qnk1661snw" path="res://graphics/items/poof/frame003.png" id="6_kf620"]
+[ext_resource type="Texture2D" uid="uid://c17aqjqwbnhhs" path="res://graphics/items/poof/frame004.png" id="7_b6n36"]
+[ext_resource type="Texture2D" uid="uid://dqpdkdxmytmsb" path="res://graphics/items/poof/frame005.png" id="8_abioj"]
+[ext_resource type="Texture2D" uid="uid://bhf053w7jexyt" path="res://graphics/items/poof/frame006.png" id="9_r6vj1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0qen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sc3p5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1ft7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8embo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ahsu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kf620")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b6n36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_abioj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r6vj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sc3p5")
+}],
+"loop": false,
+"name": &"poof",
+"speed": 12.0
+}]
+
+[node name="Acid" type="Node2D"]
+script = ExtResource("1_28xj0")
+
+[node name="poof" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_s0qen")
+animation = &"poof"
+autoplay = "default"

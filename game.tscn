@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=139 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_deb8d"]
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ck6irbhwwlk3i" path="res://graphics/mouse/death/frame000.png" id="3_a6lwl"]
 [ext_resource type="Texture2D" uid="uid://b8bmivrsf2jqi" path="res://graphics/mouse/idle/frame000.png" id="3_eg5m0"]
 [ext_resource type="Texture2D" uid="uid://bgormcm3l1sfw" path="res://graphics/cursor/Hand0.png" id="3_nxd8a"]
+[ext_resource type="PackedScene" uid="uid://28xqdvjvnsnx" path="res://map/acid_piece.tscn" id="4_1owgv"]
 [ext_resource type="Texture2D" uid="uid://cwfnoxybx7tq" path="res://graphics/mouse/idle/frame001.png" id="4_f5xo7"]
 [ext_resource type="Texture2D" uid="uid://dbj0a2brvhsmx" path="res://graphics/mouse/death/frame001.png" id="4_hbhrr"]
 [ext_resource type="Texture2D" uid="uid://be25c6mshi438" path="res://graphics/cursor/Hand1.png" id="4_kxvwk"]
@@ -121,7 +122,6 @@
 [ext_resource type="Texture2D" uid="uid://dg2cbfoim6kv7" path="res://graphics/mouse/run/frame005.png" id="88_5jb46"]
 [ext_resource type="Texture2D" uid="uid://b52ok58n77sdr" path="res://graphics/mouse/run/frame006.png" id="89_ayhyt"]
 [ext_resource type="Texture2D" uid="uid://btnh81hmakl44" path="res://graphics/mouse/run/frame007.png" id="90_06a34"]
-[ext_resource type="Script" path="res://scripts/itemcount.gd" id="92_ni3rh"]
 [ext_resource type="Texture2D" uid="uid://bb71xreoov5sj" path="res://graphics/items/fan/frame00.png" id="96_u06ny"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
 [ext_resource type="PackedScene" uid="uid://dnltbxbdvgli5" path="res://map/map.tscn" id="107_sbdnp"]
@@ -129,6 +129,7 @@
 [ext_resource type="PackedScene" uid="uid://d2rh1bue42f67" path="res://items/spring.tscn" id="114_5loy6"]
 [ext_resource type="Texture2D" uid="uid://bjectt37xygra" path="res://graphics/items/spring/frame000.png" id="114_5nuq7"]
 [ext_resource type="PackedScene" uid="uid://hkogf8nblgtr" path="res://map/tunnel.tscn" id="116_oowc5"]
+[ext_resource type="PackedScene" uid="uid://c7b51vqj07fh8" path="res://map/acid.tscn" id="130_ppnu2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p8ynt"]
 normal = Vector2(1, 0)
@@ -544,20 +545,23 @@ shape = SubResource("WorldBoundaryShape2D_cu0mj")
 
 [node name="map" parent="." instance=ExtResource("107_sbdnp")]
 
-[node name="tunnel" parent="." instance=ExtResource("116_oowc5")]
+[node name="Acid" parent="." instance=ExtResource("130_ppnu2")]
+position = Vector2(1200, 451)
+
+[node name="acid_piece" parent="Acid" instance=ExtResource("4_1owgv")]
+position = Vector2(-50, 0)
+
+[node name="acid_piece2" parent="Acid" instance=ExtResource("4_1owgv")]
+position = Vector2(50, 0)
+type = 2
+
+[node name="tunnel" parent="." node_paths=PackedStringArray("target") instance=ExtResource("116_oowc5")]
 position = Vector2(929, 1001)
+target = NodePath("../tunnel_target")
+item_counts = Array[int]([1])
 
-[node name="target" type="Node2D" parent="tunnel"]
-position = Vector2(-308, 284)
-
-[node name="Node" type="Node" parent="tunnel/target" node_paths=PackedStringArray("item")]
-script = ExtResource("92_ni3rh")
-item = NodePath("../../../ui/Item1")
-count = 5
-
-[node name="Node2" type="Node" parent="tunnel/target" node_paths=PackedStringArray("item")]
-script = ExtResource("92_ni3rh")
-item = NodePath("../../../ui/Item2")
+[node name="tunnel_target" type="Node2D" parent="."]
+position = Vector2(621, 1285)
 
 [node name="placetarget" type="Node2D" parent="."]
 
@@ -627,6 +631,7 @@ texture = ExtResource("96_u06ny")
 [node name="Item2" type="Area2D" parent="ui"]
 script = ExtResource("15_8s55e")
 item = ExtResource("114_5loy6")
+item_index = 1
 
 [node name="Frame000" type="Sprite2D" parent="ui/Item2"]
 position = Vector2(1805, 436)
@@ -657,7 +662,3 @@ sprite_frames = SubResource("SpriteFrames_7ix31")
 process_priority = 1
 offset = Vector2(960, 0)
 script = ExtResource("105_ny4tv")
-
-[connection signal="restart" from="." to="ui/Item1" method="_on_restart"]
-[connection signal="restart" from="." to="ui/Item2" method="_on_restart"]
-[connection signal="restart" from="." to="ui/Cursor" method="_on_restart"]
