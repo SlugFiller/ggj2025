@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dnltbxbdvgli5"]
+[gd_scene load_steps=38 format=4 uid="uid://dnltbxbdvgli5"]
 
 [ext_resource type="Texture2D" uid="uid://b3lemxrggt373" path="res://graphics/map/Backgrounds/background lvl1.png" id="1_56xgc"]
 [ext_resource type="Texture2D" uid="uid://gjbwbfyqctc4" path="res://graphics/map/Backgrounds/background lvl2.png" id="1_sf70l"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://j8v670r2u40f" path="res://map/fireball.tscn" id="12_t4lkf"]
 [ext_resource type="Texture2D" uid="uid://ci6hefhwe8mmj" path="res://graphics/map/Backgrounds/Level2_3.png" id="17_ts25h"]
 [ext_resource type="PackedScene" uid="uid://c7b51vqj07fh8" path="res://map/acid.tscn" id="18_cnnbh"]
+[ext_resource type="Texture2D" uid="uid://bya35btsn8p3a" path="res://graphics/map/Portal.png" id="19_0sm7n"]
 [ext_resource type="PackedScene" uid="uid://28xqdvjvnsnx" path="res://map/acid_piece.tscn" id="19_7tjvb"]
 [ext_resource type="PackedScene" uid="uid://dbk7iik3nnxlc" path="res://map/ghost.tscn" id="23_8x3vp"]
 [ext_resource type="PackedScene" uid="uid://draytkaf5sd3s" path="res://map/ghost_blocker.tscn" id="24_wttw7"]
@@ -188,17 +189,40 @@ target = NodePath("../tunnel_target4")
 direction = 0
 item_counts = Array[int]([1, 3, 2])
 
+[node name="Portal" type="Sprite2D" parent="."]
+position = Vector2(177, 133)
+texture = ExtResource("19_0sm7n")
+flip_h = true
+
 [node name="tunnel_target" type="Node2D" parent="."]
 position = Vector2(257, 2299)
+
+[node name="Portal2" type="Sprite2D" parent="tunnel_target"]
+position = Vector2(-50, 0)
+texture = ExtResource("19_0sm7n")
+flip_h = true
 
 [node name="tunnel_target2" type="Node2D" parent="."]
 position = Vector2(1394, 4364)
 
+[node name="Portal3" type="Sprite2D" parent="tunnel_target2"]
+position = Vector2(50, 0)
+texture = ExtResource("19_0sm7n")
+
 [node name="tunnel_target3" type="Node2D" parent="."]
 position = Vector2(230, 6353)
 
+[node name="Portal3" type="Sprite2D" parent="tunnel_target3"]
+position = Vector2(-50, 0)
+texture = ExtResource("19_0sm7n")
+flip_h = true
+
 [node name="tunnel_target4" type="Node2D" parent="."]
 position = Vector2(1396, 8739)
+
+[node name="Portal3" type="Sprite2D" parent="tunnel_target4"]
+position = Vector2(50, 0)
+texture = ExtResource("19_0sm7n")
 
 [node name="Gem" parent="." instance=ExtResource("11_eyo2b")]
 position = Vector2(1222, 218)
