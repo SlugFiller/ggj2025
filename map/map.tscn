@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bya35btsn8p3a" path="res://graphics/map/Portal.png" id="19_0sm7n"]
 [ext_resource type="PackedScene" uid="uid://28xqdvjvnsnx" path="res://map/acid_piece.tscn" id="19_7tjvb"]
 [ext_resource type="PackedScene" uid="uid://dbk7iik3nnxlc" path="res://map/ghost.tscn" id="23_8x3vp"]
-[ext_resource type="PackedScene" uid="uid://draytkaf5sd3s" path="res://map/ghost_blocker.tscn" id="24_wttw7"]
+[ext_resource type="PackedScene" uid="uid://dwpp0or183fmw" path="res://map/ghost_blocker.tscn" id="24_wttw7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4o826"]
 texture = ExtResource("1_was1j")
@@ -51,7 +51,6 @@ texture = ExtResource("4_0v2ys")
 texture_region_size = Vector2i(200, 200)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
-0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ssl5"]
 texture = ExtResource("5_pta6m")
