@@ -14,6 +14,10 @@ func _ready() -> void:
 	match type:
 		Type.DIAMOND:
 			sprite.play("diamond")
+		Type.EMERALD:
+			sprite.play("emerald")
+		Type.RUBY:
+			sprite.play("ruby")
 
 
 func _on_body_entered(_body: Node2D) -> void:

@@ -5,7 +5,7 @@ enum Direction {
 	RIGHT
 }
 
-const RUN_SPEED := 300.0
+const RUN_SPEED := 100.0
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var death: CollisionShape2D = $death/CollisionShape2D
