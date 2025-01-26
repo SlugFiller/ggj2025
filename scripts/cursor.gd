@@ -30,6 +30,8 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
+		if _is_inactive():
+			return
 		if event.pressed:
 			hold = hover
 		else:
@@ -59,7 +61,7 @@ func _process(_delta: float) -> void:
 	sprite.visible = get_viewport().get_visible_rect().has_point(point)
 	self.position = point
 	hover = null
-	if mouse.scrollnimation > 0:
+	if _is_inactive():
 		if hold != null:
 			hold.held.visible = false
 		hold = null
@@ -94,3 +96,6 @@ func _on_restart() -> void:
 		poof.position = placed.position
 		placetarget.add_child(poof)
 		placed.queue_free()
+
+func _is_inactive():
+	return mouse.scrollnimation > 0 || get_tree().paused

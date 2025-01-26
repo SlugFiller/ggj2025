@@ -77,20 +77,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	if death_detector.has_overlapping_bodies():
-		self.deathfall = true
-		self.scrollnimation = DEAD_TIME
-		sprite.play("death")
-		if randi_range(0, 1) > 0:
-			death1.play()
-		else:
-			death2.play()
-		match randi_range(0, 7):
-			0:
-				voice_death_1.play()
-			1:
-				voice_death_2.play()
-			3:
-				voice_death_3.play()
+		die()
 		return
 	for tunnel_candidate in tunnel_detector.get_overlapping_areas():
 		var tunnel := tunnel_candidate as Tunnel
@@ -180,3 +167,22 @@ func _on_checkpoint(tunnel: Tunnel) -> void:
 		self.checkpoint = self.position
 		self.is_ending = true
 	self.checkpoint_direction = tunnel.direction
+
+func die() -> void:
+	if self.scrollnimation > 0.0:
+		return
+	self.deathfall = true
+	self.scrollnimation = DEAD_TIME
+	sprite.play("death")
+	if randi_range(0, 1) > 0:
+		death1.play()
+	else:
+		death2.play()
+	match randi_range(0, 7):
+		0:
+			voice_death_1.play()
+		1:
+			voice_death_2.play()
+		3:
+			voice_death_3.play()
+	return

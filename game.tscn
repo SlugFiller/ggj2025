@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=49 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
 [ext_resource type="PackedScene" uid="uid://0l87e2dki8x7" path="res://items/fan.tscn" id="2_axotv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://duqr6hpm2iye6" path="res://graphics/cursor/Hover2.png" id="9_0ldq0"]
 [ext_resource type="Texture2D" uid="uid://daxlp5tg640oh" path="res://graphics/cursor/Hover3.png" id="10_h0ggc"]
 [ext_resource type="Texture2D" uid="uid://bs8u1o6kspghp" path="res://graphics/cursor/PickUp0.png" id="11_hgsmv"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_1rheg"]
 [ext_resource type="Texture2D" uid="uid://bwwrawm4s27bh" path="res://graphics/cursor/PickUp1.png" id="12_lthvd"]
 [ext_resource type="Texture2D" uid="uid://coj6ntjybxis6" path="res://graphics/cursor/PickUp2.png" id="13_oexhb"]
 [ext_resource type="Texture2D" uid="uid://bu05eob7t3a7p" path="res://graphics/cursor/PickUp3.png" id="14_775qd"]
@@ -22,6 +23,19 @@
 [ext_resource type="AudioStream" uid="uid://bji1bky6lsp67" path="res://sounds/voice/tool2.wav" id="26_hwgx5"]
 [ext_resource type="AudioStream" uid="uid://wctcpt5ejpdh" path="res://sounds/voice/tool3.wav" id="27_kse0w"]
 [ext_resource type="AudioStream" uid="uid://qqu4ra6ipk6e" path="res://sounds/voice/tool4.wav" id="28_0k8k5"]
+[ext_resource type="Texture2D" uid="uid://dstfmcwfqv4ig" path="res://graphics/ui/buttons/Buttons_Neutral/Pause.png" id="29_ryipe"]
+[ext_resource type="Texture2D" uid="uid://bvd5tv2hsbwn" path="res://graphics/ui/buttons/Buttons_Pressed/Pause.png" id="30_2vp2v"]
+[ext_resource type="Texture2D" uid="uid://brj7awuecgiaq" path="res://graphics/ui/buttons/Buttons_Hover/Pause.png" id="31_tdcp2"]
+[ext_resource type="Texture2D" uid="uid://1fmjcvkxk6na" path="res://graphics/ui/Menu_BG.png" id="32_cpqju"]
+[ext_resource type="Texture2D" uid="uid://cd83fwbvkxaeb" path="res://graphics/ui/buttons/Buttons_Neutral/Back_to_game.png" id="33_bp4hm"]
+[ext_resource type="Texture2D" uid="uid://b08867wrgc345" path="res://graphics/ui/buttons/Buttons_Pressed/Back_to_game.png" id="34_pyu4y"]
+[ext_resource type="Texture2D" uid="uid://cjvtcsily8uq2" path="res://graphics/ui/buttons/Buttons_Hover/Back_to_game.png" id="35_ipxuf"]
+[ext_resource type="Texture2D" uid="uid://c3mlnsf2i1pyo" path="res://graphics/ui/buttons/Buttons_Neutral/Try_again.png" id="36_dps5t"]
+[ext_resource type="Texture2D" uid="uid://cdaudx6s4y6w8" path="res://graphics/ui/buttons/Buttons_Pressed/Try_again.png" id="37_lcpww"]
+[ext_resource type="Texture2D" uid="uid://cyjxk3o4mejy6" path="res://graphics/ui/buttons/Buttons_Hover/Try_again.png" id="38_o53o0"]
+[ext_resource type="Texture2D" uid="uid://coka86h6spsxh" path="res://graphics/ui/buttons/Buttons_Neutral/Main_Menu.png" id="39_q0vlu"]
+[ext_resource type="Texture2D" uid="uid://b5oi3r4s5rlmh" path="res://graphics/ui/buttons/Buttons_Pressed/Main_Menu.png" id="40_phd55"]
+[ext_resource type="Texture2D" uid="uid://bxqcrc4lejgfs" path="res://graphics/ui/buttons/Buttons_Hover/Main_Menu.png" id="41_m20b2"]
 [ext_resource type="Texture2D" uid="uid://bb71xreoov5sj" path="res://graphics/items/fan/frame00.png" id="96_u06ny"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="105_ny4tv"]
 [ext_resource type="PackedScene" uid="uid://dnltbxbdvgli5" path="res://map/map.tscn" id="107_sbdnp"]
@@ -188,7 +202,59 @@ position = Vector2(-20, -10)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("118_y3rme")
 
+[node name="pause" type="Node2D" parent="ui"]
+process_mode = 3
+script = ExtResource("12_1rheg")
+
+[node name="button" type="TextureButton" parent="ui/pause"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 641.0
+offset_bottom = 642.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("29_ryipe")
+texture_pressed = ExtResource("30_2vp2v")
+texture_hover = ExtResource("31_tdcp2")
+
+[node name="menu" type="Node2D" parent="ui/pause"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ui/pause/menu"]
+position = Vector2(960, 540)
+texture = ExtResource("32_cpqju")
+
+[node name="TextureButton" type="TextureButton" parent="ui/pause/menu"]
+offset_left = 760.0
+offset_top = 376.0
+offset_right = 2175.0
+offset_bottom = 822.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("33_bp4hm")
+texture_pressed = ExtResource("34_pyu4y")
+texture_hover = ExtResource("35_ipxuf")
+
+[node name="TextureButton2" type="TextureButton" parent="ui/pause/menu"]
+offset_left = 760.0
+offset_top = 538.0
+offset_right = 2175.0
+offset_bottom = 985.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("36_dps5t")
+texture_pressed = ExtResource("37_lcpww")
+texture_hover = ExtResource("38_o53o0")
+
+[node name="TextureButton3" type="TextureButton" parent="ui/pause/menu"]
+offset_left = 760.0
+offset_top = 702.0
+offset_right = 2175.0
+offset_bottom = 1149.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("39_q0vlu")
+texture_pressed = ExtResource("40_phd55")
+texture_hover = ExtResource("41_m20b2")
+
 [node name="Cursor" type="Node2D" parent="ui"]
+process_mode = 3
 script = ExtResource("2_nma6k")
 
 [node name="sprite" type="AnimatedSprite2D" parent="ui/Cursor"]
@@ -217,3 +283,9 @@ script = ExtResource("105_ny4tv")
 stream = ExtResource("26_6arpc")
 autoplay = true
 parameters/looping = true
+
+[connection signal="pressed" from="ui/pause/button" to="ui/pause" method="_on_pause"]
+[connection signal="pressed" from="ui/pause/menu/TextureButton" to="ui/pause" method="_on_unpause"]
+[connection signal="pressed" from="ui/pause/menu/TextureButton2" to="Mouse" method="die"]
+[connection signal="pressed" from="ui/pause/menu/TextureButton2" to="ui/pause" method="_on_unpause"]
+[connection signal="pressed" from="ui/pause/menu/TextureButton3" to="ui/pause" method="_on_quit"]
