@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvvc7u8ym5mdc"]
+[gd_scene load_steps=15 format=3 uid="uid://dbk7iik3nnxlc"]
 
 [ext_resource type="Texture2D" uid="uid://x6hj8h0h4ttl" path="res://graphics/map/ghost/frame000.png" id="1_n02m2"]
 [ext_resource type="Script" path="res://scripts/ghost.gd" id="1_wbb0l"]
@@ -49,6 +49,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n02m2")
+}],
+"loop": true,
+"name": &"frozen",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qfr0q"]
@@ -62,8 +70,8 @@ script = ExtResource("1_wbb0l")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_3gf8j")
+animation = &"frozen"
 autoplay = "default"
-frame_progress = 0.994653
 
 [node name="death" type="StaticBody2D" parent="."]
 collision_layer = 4

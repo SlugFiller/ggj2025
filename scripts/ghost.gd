@@ -50,6 +50,7 @@ func _physics_process(delta: float) -> void:
 func _on_restart() -> void:
 	if !frozen:
 		return
+	sprite.play("default")
 	frozen = false
 	death.disabled = false
 	freeze.disabled = false
@@ -58,6 +59,7 @@ func _on_restart() -> void:
 	get_parent().add_child(poof)
 
 func _on_freeze() -> void:
+	sprite.play("frozen")
 	frozen = true
 	death.disabled = true
 	freeze.disabled = true
