@@ -41,7 +41,7 @@ const FAN_GRAVITY := 500.0
 const MAX_FALL := 99999.0
 const JUMP_SPEED := 400.0
 const DEAD_TIME := 2.0
-const TUNNEL_TIME := 3.0
+const TUNNEL_TIME := 2.0
 const TIME_SCROLL := 1.0
 const DEATH_FALL_SPEED := 800.0
 const TIME_DEATH_FALL := 1.5
@@ -73,6 +73,7 @@ func _physics_process(delta: float) -> void:
 		self.y_shift = 0.0
 		sprite.position = Vector2.ZERO
 		sprite.play("idle")
+		sprite.visible = true
 		move_and_slide()
 		return
 	if death_detector.has_overlapping_bodies():
@@ -95,6 +96,8 @@ func _physics_process(delta: float) -> void:
 		var tunnel := tunnel_candidate as Tunnel
 		if tunnel == null:
 			continue
+		sprite.visible = false
+		tunnel.enter()
 		broadcast.checkpoint.emit(tunnel)
 		self.scrollnimation = TUNNEL_TIME
 		return

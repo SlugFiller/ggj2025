@@ -1,9 +1,351 @@
-[gd_scene load_steps=4 format=3 uid="uid://hkogf8nblgtr"]
+[gd_scene load_steps=27 format=3 uid="uid://hkogf8nblgtr"]
 
 [ext_resource type="Script" path="res://scripts/tunnel.gd" id="1_u78d2"]
 [ext_resource type="Texture2D" uid="uid://btt40xkh8xcyy" path="res://graphics/map/Mouse-hole.png" id="2_45xwp"]
+[ext_resource type="Texture2D" uid="uid://dountosloutpk" path="res://graphics/mouse/enterhole/frame000.png" id="3_jkf5h"]
+[ext_resource type="Texture2D" uid="uid://cxluljvnv0n8p" path="res://graphics/mouse/enterhole/frame001.png" id="4_0d5pv"]
+[ext_resource type="Texture2D" uid="uid://bqowr6100edwv" path="res://graphics/mouse/enterhole/frame002.png" id="5_d6g3m"]
+[ext_resource type="Texture2D" uid="uid://c5b24f1xuffos" path="res://graphics/mouse/enterhole/frame003.png" id="6_kjylu"]
+[ext_resource type="Texture2D" uid="uid://bvy737l26uc61" path="res://graphics/mouse/enterhole/frame004.png" id="7_r22sg"]
+[ext_resource type="Texture2D" uid="uid://darwswoylsb6l" path="res://graphics/mouse/enterhole/frame005.png" id="8_33y6b"]
+[ext_resource type="Texture2D" uid="uid://b0bhmslgdc0sh" path="res://graphics/mouse/enterhole/frame006.png" id="9_l2v5r"]
+[ext_resource type="Texture2D" uid="uid://7lrh3xjbkgcu" path="res://graphics/mouse/enterhole/frame007.png" id="10_sdfh8"]
+[ext_resource type="Texture2D" uid="uid://byfa66jol21xm" path="res://graphics/mouse/enterhole/frame008.png" id="11_8xroq"]
+[ext_resource type="Texture2D" uid="uid://dp3in3px7dufv" path="res://graphics/mouse/enterhole/frame009.png" id="12_8pc8t"]
+[ext_resource type="Texture2D" uid="uid://qt8jf3dmusgr" path="res://graphics/mouse/enterhole/frame010.png" id="13_l2xb5"]
+[ext_resource type="Texture2D" uid="uid://75vwhpnlwba8" path="res://graphics/mouse/enterhole/frame011.png" id="14_sdy31"]
+[ext_resource type="Texture2D" uid="uid://dxys4oh8vvrlk" path="res://graphics/mouse/enterhole/frame012.png" id="15_fh50l"]
+[ext_resource type="Texture2D" uid="uid://cdcvqvp3a434y" path="res://graphics/mouse/enterhole/frame013.png" id="16_36w0p"]
+[ext_resource type="Texture2D" uid="uid://dif645ncxni01" path="res://graphics/mouse/enterhole/frame014.png" id="17_s5ox1"]
+[ext_resource type="Texture2D" uid="uid://bukxffjqa3bt" path="res://graphics/mouse/enterhole/frame015.png" id="18_wo81f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3qnc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvwoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jkf5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0d5pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d6g3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kjylu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r22sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_33y6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_l2v5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sdfh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8xroq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8pc8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_l2xb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_sdy31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_fh50l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_36w0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_s5ox1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wo81f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ol3d8"]
+resource_name = "left"
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse-hole:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-52, -105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouse:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_h4mto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse-hole:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-52, -105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouse:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v6ixd"]
+resource_name = "right"
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse-hole:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0416667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-52, -105)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouse:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0416667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dlco7"]
+resource_name = "left_enter"
+length = 0.583338
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse-hole:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-13, -105), Vector2(4, -105), Vector2(43, -105), Vector2(81, -105), Vector2(117, -105), Vector2(156, -105), Vector2(190, -105), Vector2(217, -105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12, 13]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouse:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_smvpl"]
+resource_name = "right_enter"
+length = 0.583338
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse-hole:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(21, -105), Vector2(-6, -105), Vector2(-43, -105), Vector2(-80, -105), Vector2(-118, -105), Vector2(-154, -105), Vector2(-192, -105), Vector2(-219, -105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse:frame")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12, 13]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouse:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4u3g3"]
+_data = {
+"RESET": SubResource("Animation_h4mto"),
+"left": SubResource("Animation_ol3d8"),
+"left_enter": SubResource("Animation_dlco7"),
+"right": SubResource("Animation_v6ixd"),
+"right_enter": SubResource("Animation_smvpl")
+}
 
 [node name="tunnel" type="Area2D"]
 collision_layer = 8
@@ -18,3 +360,14 @@ shape = SubResource("RectangleShape2D_i3qnc")
 [node name="Mouse-hole" type="Sprite2D" parent="."]
 position = Vector2(0, -100)
 texture = ExtResource("2_45xwp")
+
+[node name="Mouse" type="AnimatedSprite2D" parent="."]
+position = Vector2(-52, -105)
+scale = Vector2(0.32, 0.32)
+sprite_frames = SubResource("SpriteFrames_xvwoc")
+frame = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4u3g3")
+}

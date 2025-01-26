@@ -167,6 +167,7 @@ item_counts = Array[int]([0, 3, 0])
 
 [node name="tunnel3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_2r4v7")]
 position = Vector2(208, 5594)
+tunnel_direction = 1
 target = NodePath("../tunnel_target3")
 item_counts = Array[int]([0, 4, 2])
 
