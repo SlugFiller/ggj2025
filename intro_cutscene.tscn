@@ -1,7 +1,109 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1hcfxxj3oj8g"]
+[gd_scene load_steps=16 format=3 uid="uid://c1hcfxxj3oj8g"]
 
 [ext_resource type="Script" path="res://scripts/intro_cutscene.gd" id="1_cxs7k"]
 [ext_resource type="VideoStream" path="res://graphics/cutscene.ogv" id="2_uxax1"]
+[ext_resource type="Texture2D" uid="uid://t7eesop2cn7t" path="res://graphics/Captions.png" id="3_bf4s5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpf18"]
+atlas = ExtResource("3_bf4s5")
+region = Rect2(80, 57, 830, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynqst"]
+atlas = ExtResource("3_bf4s5")
+region = Rect2(80, 302, 830, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kuw2"]
+atlas = ExtResource("3_bf4s5")
+region = Rect2(80, 547, 830, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i877"]
+atlas = ExtResource("3_bf4s5")
+region = Rect2(80, 792, 830, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q8cs"]
+atlas = ExtResource("3_bf4s5")
+region = Rect2(910, 57, 830, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm25o"]
+atlas = ExtResource("3_bf4s5")
+region = Rect2(910, 302, 830, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2pm2"]
+atlas = ExtResource("3_bf4s5")
+region = Rect2(910, 547, 830, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soctk"]
+atlas = ExtResource("3_bf4s5")
+region = Rect2(910, 792, 830, 245)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3nrjj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpf18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynqst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kuw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i877")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q8cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm25o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2pm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soctk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_q4ikm"]
+resource_name = "intro"
+length = 44.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 6.5, 10, 16, 23, 28, 33.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_2tm5t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4jp4"]
+_data = {
+"RESET": SubResource("Animation_2tm5t"),
+"intro": SubResource("Animation_q4ikm")
+}
 
 [node name="IntroCutscene" type="Node2D"]
 script = ExtResource("1_cxs7k")
@@ -12,11 +114,22 @@ offset_bottom = 40.0
 stream = ExtResource("2_uxax1")
 autoplay = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1436, 326)
+sprite_frames = SubResource("SpriteFrames_3nrjj")
+
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 8.0
 offset_bottom = 8.0
 flat = true
 
-[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 2
+libraries = {
+"": SubResource("AnimationLibrary_h4jp4")
+}
+autoplay = "intro"
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_finished"]
