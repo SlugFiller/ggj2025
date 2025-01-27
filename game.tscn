@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bdjffdg4jfv7t"]
+[gd_scene load_steps=60 format=3 uid="uid://bdjffdg4jfv7t"]
 
 [ext_resource type="Script" path="res://scripts/broadcast.gd" id="1_lnqoj"]
 [ext_resource type="PackedScene" uid="uid://0l87e2dki8x7" path="res://items/fan.tscn" id="2_axotv"]
@@ -9,15 +9,25 @@
 [ext_resource type="Texture2D" uid="uid://jjvnkt1pk8pb" path="res://graphics/cursor/Hand2.png" id="5_bx7ah"]
 [ext_resource type="Texture2D" uid="uid://d3sd3dqx5tdj4" path="res://graphics/cursor/Hand3.png" id="6_pfaq6"]
 [ext_resource type="Texture2D" uid="uid://f23j6naj22y1" path="res://graphics/cursor/Hover0.png" id="7_d3bte"]
+[ext_resource type="Texture2D" uid="uid://dubuprnohixp8" path="res://graphics/ui/numbers/num0.png" id="8_f2r7x"]
 [ext_resource type="Texture2D" uid="uid://bbkq02y3umk5i" path="res://graphics/cursor/Hover1.png" id="8_njrpk"]
 [ext_resource type="Texture2D" uid="uid://duqr6hpm2iye6" path="res://graphics/cursor/Hover2.png" id="9_0ldq0"]
+[ext_resource type="Texture2D" uid="uid://cs2wu2lkvr8tf" path="res://graphics/ui/numbers/num1.png" id="9_hqp8s"]
 [ext_resource type="Texture2D" uid="uid://daxlp5tg640oh" path="res://graphics/cursor/Hover3.png" id="10_h0ggc"]
+[ext_resource type="Texture2D" uid="uid://crad1u6c0uiqq" path="res://graphics/ui/numbers/num2.png" id="10_jodib"]
+[ext_resource type="Texture2D" uid="uid://jvmggvlc8i4h" path="res://graphics/ui/numbers/num3.png" id="11_ci3ac"]
 [ext_resource type="Texture2D" uid="uid://bs8u1o6kspghp" path="res://graphics/cursor/PickUp0.png" id="11_hgsmv"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="12_1rheg"]
 [ext_resource type="Texture2D" uid="uid://bwwrawm4s27bh" path="res://graphics/cursor/PickUp1.png" id="12_lthvd"]
+[ext_resource type="Texture2D" uid="uid://crl6k3chvyr3f" path="res://graphics/ui/numbers/num4.png" id="12_wpahw"]
+[ext_resource type="Texture2D" uid="uid://b78rplpo0qryc" path="res://graphics/ui/numbers/num5.png" id="13_ciend"]
 [ext_resource type="Texture2D" uid="uid://coj6ntjybxis6" path="res://graphics/cursor/PickUp2.png" id="13_oexhb"]
 [ext_resource type="Texture2D" uid="uid://bu05eob7t3a7p" path="res://graphics/cursor/PickUp3.png" id="14_775qd"]
+[ext_resource type="Texture2D" uid="uid://du7ajx37gw5uy" path="res://graphics/ui/numbers/num6.png" id="14_ge2xo"]
 [ext_resource type="Script" path="res://scripts/item.gd" id="15_8s55e"]
+[ext_resource type="Texture2D" uid="uid://cofcp5mkcmc41" path="res://graphics/ui/numbers/num7.png" id="15_rrexg"]
+[ext_resource type="Texture2D" uid="uid://bumptdqyqkkn0" path="res://graphics/ui/numbers/num8.png" id="16_b4jl8"]
+[ext_resource type="Texture2D" uid="uid://bc5y510l01e3w" path="res://graphics/ui/numbers/num9.png" id="17_amswf"]
 [ext_resource type="AudioStream" uid="uid://d1e3rnfe3xya3" path="res://sounds/voice/tool1.wav" id="25_rcwmv"]
 [ext_resource type="AudioStream" uid="uid://dwhy0x0jkfmjd" path="res://sounds/music.ogg" id="26_6arpc"]
 [ext_resource type="AudioStream" uid="uid://bji1bky6lsp67" path="res://sounds/voice/tool2.wav" id="26_hwgx5"]
@@ -50,6 +60,44 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cu0mj"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eyagt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_f2r7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hqp8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jodib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ci3ac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wpahw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ciend")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ge2xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rrexg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_b4jl8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_amswf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4j61"]
 size = Vector2(200, 200)
@@ -143,6 +191,11 @@ position = Vector2(1781, 178)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("96_u06ny")
 
+[node name="count_display" type="AnimatedSprite2D" parent="ui/Item1"]
+position = Vector2(1870, 300)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_eyagt")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item1"]
 position = Vector2(1802, 230)
 shape = SubResource("RectangleShape2D_k4j61")
@@ -167,6 +220,11 @@ position = Vector2(1805, 430)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("114_5nuq7")
 
+[node name="count_display" type="AnimatedSprite2D" parent="ui/Item2"]
+position = Vector2(1870, 520)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_eyagt")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item2"]
 position = Vector2(1802, 450)
 shape = SubResource("RectangleShape2D_k4j61")
@@ -189,6 +247,11 @@ item_index = 2
 position = Vector2(1820, 667)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("118_y3rme")
+
+[node name="count_display" type="AnimatedSprite2D" parent="ui/Item3"]
+position = Vector2(1870, 740)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_eyagt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ui/Item3"]
 position = Vector2(1802, 670)

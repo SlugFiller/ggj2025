@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bk21rnair2qj1"]
+[gd_scene load_steps=14 format=3 uid="uid://bk21rnair2qj1"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_leg54"]
 [ext_resource type="Texture2D" uid="uid://1fmjcvkxk6na" path="res://graphics/ui/Menu_BG.png" id="1_uahgc"]
@@ -8,8 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://bmovdyjwa2cwl" path="res://graphics/ui/buttons/Buttons_Pressed/New_Game.png" id="5_ipyul"]
 [ext_resource type="Texture2D" uid="uid://w1sw31fqhept" path="res://graphics/ui/buttons/Buttons_Hover/New_Game.png" id="6_2fof6"]
 [ext_resource type="Texture2D" uid="uid://5l6oaosaasu2" path="res://graphics/ui/buttons/Buttons_Neutral/Quit.png" id="7_vjle3"]
+[ext_resource type="Texture2D" uid="uid://c7wj5li5vou4d" path="res://graphics/ui/buttons/Buttons_Neutral/Credits.png" id="8_me70g"]
 [ext_resource type="Texture2D" uid="uid://cd10wksw85khs" path="res://graphics/ui/buttons/Buttons_Pressed/Quit.png" id="8_sxocc"]
+[ext_resource type="Texture2D" uid="uid://c0hel0uxnl3ln" path="res://graphics/ui/buttons/Buttons_Pressed/Credits.png" id="9_3dyht"]
 [ext_resource type="Texture2D" uid="uid://dq8dtn8jkty12" path="res://graphics/ui/buttons/Buttons_Hover/Quit.png" id="9_q7ulc"]
+[ext_resource type="Texture2D" uid="uid://cjn1pqmve0j4f" path="res://graphics/ui/buttons/Buttons_Hover/Credits.png" id="10_dc55v"]
 
 [node name="Mainmenu" type="Node2D"]
 script = ExtResource("1_leg54")
@@ -29,23 +32,34 @@ texture = ExtResource("2_lsic3")
 
 [node name="New Game" type="TextureButton" parent="."]
 offset_left = 750.0
-offset_top = 565.0
+offset_top = 518.0
 offset_right = 2165.0
-offset_bottom = 1012.0
+offset_bottom = 965.0
 scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("4_rp4oi")
 texture_pressed = ExtResource("5_ipyul")
 texture_hover = ExtResource("6_2fof6")
 
+[node name="Credits" type="TextureButton" parent="."]
+offset_left = 750.0
+offset_top = 664.0
+offset_right = 2165.0
+offset_bottom = 1111.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("8_me70g")
+texture_pressed = ExtResource("9_3dyht")
+texture_hover = ExtResource("10_dc55v")
+
 [node name="Quit" type="TextureButton" parent="."]
 offset_left = 750.0
-offset_top = 780.0
+offset_top = 815.0
 offset_right = 2165.0
-offset_bottom = 1227.0
+offset_bottom = 1262.0
 scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("7_vjle3")
 texture_pressed = ExtResource("8_sxocc")
 texture_hover = ExtResource("9_q7ulc")
 
 [connection signal="pressed" from="New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

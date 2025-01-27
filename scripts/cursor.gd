@@ -37,6 +37,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			if hold != null:
 				hold.count -= 1
+				hold.update_count()
 				hold.held.visible = false
 				var placed := hold.item.instantiate() as Node2D
 				placed.position = event.position + camera.position + Vector2(0, -540)
