@@ -33,6 +33,7 @@ func _input(event: InputEvent) -> void:
 		if _is_inactive():
 			return
 		if event.pressed:
+			_update_hover(event.position)
 			hold = hover
 		else:
 			if hold != null:
@@ -67,18 +68,7 @@ func _process(_delta: float) -> void:
 			hold.held.visible = false
 		hold = null
 	else:
-		var space_state := get_world_2d().direct_space_state
-		var query := PhysicsPointQueryParameters2D.new()
-		query.canvas_instance_id = get_parent().get_instance_id()
-		query.position = point
-		query.collide_with_areas = true
-		query.collide_with_bodies = false
-		query.collision_mask = 1
-		for obj in space_state.intersect_point(query):
-			var check: Item = obj["collider"] as Item
-			if check != null && check.count > 0:
-				hover = check
-				break
+		_update_hover(point)
 	if hold != null:
 		hold.held.visible = sprite.visible
 		hold.held.position = point
@@ -98,5 +88,20 @@ func _on_restart() -> void:
 		placetarget.add_child(poof)
 		placed.queue_free()
 
-func _is_inactive():
+func _is_inactive() -> bool:
 	return mouse.scrollnimation > 0 || get_tree().paused
+
+func _update_hover(point: Vector2) -> void:
+	hover = null
+	var space_state := get_world_2d().direct_space_state
+	var query := PhysicsPointQueryParameters2D.new()
+	query.canvas_instance_id = get_parent().get_instance_id()
+	query.position = point
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	query.collision_mask = 1
+	for obj in space_state.intersect_point(query):
+		var check: Item = obj["collider"] as Item
+		if check != null && check.count > 0:
+			hover = check
+			break
